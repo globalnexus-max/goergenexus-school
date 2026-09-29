@@ -1,112 +1,594 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Goergenexus School</title>
+    <meta
+      name="description"
+      content="Goergenexus School offers a modern K-12 learning experience with academic excellence, student support, and a strong community." 
+    />
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+      :root {
+        --primary: #2f5dff;
+        --secondary: #1b2340;
+        --accent: #ffb703;
+        --light: #f5f7ff;
+        --text: #1f2a37;
+        --muted: #5f6c7b;
+        --white: #ffffff;
+        --shadow: 0 18px 40px rgba(31, 42, 55, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: var(--light);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      .container {
+        width: min(1120px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .topbar {
+        background: rgba(27, 35, 64, 0.95);
+        color: var(--white);
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        backdrop-filter: blur(8px);
+      }
+
+      .topbar-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 72px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--white);
+      }
+
+      .brand-mark {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--primary), #7b9cff);
+        display: grid;
+        place-items: center;
+        font-weight: bold;
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 26px;
+      }
+
+      nav a {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.96rem;
+        transition: color 0.2s ease;
+      }
+
+      nav a:hover {
+        color: var(--white);
+      }
+
+      .cta {
+        display: inline-block;
+        background: var(--accent);
+        color: var(--secondary);
+        padding: 12px 22px;
+        border-radius: 999px;
+        font-weight: 700;
+        box-shadow: 0 12px 22px rgba(255, 183, 3, 0.3);
+      }
+
+      .hero {
+        padding: 72px 0 30px;
+        background: linear-gradient(135deg, #edf3ff 0%, #eef6ff 100%);
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 48px;
+        align-items: center;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        background: rgba(47, 93, 255, 0.08);
+        border: 1px solid rgba(47, 93, 255, 0.14);
+        color: var(--primary);
+        padding: 8px 14px;
+        border-radius: 999px;
+        font-size: 0.78rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+
+      h1 {
+        font-size: clamp(2.3rem, 4vw, 4.3rem);
+        line-height: 1.1;
+        margin: 20px 0 16px;
+        color: var(--secondary);
+      }
+
+      .lead {
+        font-size: 1.08rem;
+        color: var(--muted);
+        max-width: 620px;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 26px;
+      }
+
+      .button-primary,
+      .button-secondary {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 50px;
+        padding: 0 24px;
+        border-radius: 999px;
+        font-weight: 700;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .button-primary {
+        background: var(--primary);
+        color: var(--white);
+        box-shadow: 0 12px 25px rgba(47, 93, 255, 0.22);
+      }
+
+      .button-secondary {
+        background: transparent;
+        color: var(--secondary);
+        border: 2px solid rgba(27, 35, 64, 0.15);
+      }
+
+      .button-primary:hover,
+      .button-secondary:hover,
+      .cta:hover {
+        transform: translateY(-1px);
+      }
+
+      .hero-card {
+        background: var(--white);
+        border-radius: 22px;
+        padding: 24px;
+        box-shadow: var(--shadow);
+      }
+
+      .dashboard {
+        background: linear-gradient(135deg, #1b2340 0%, #2f5dff 100%);
+        border-radius: 20px;
+        padding: 26px;
+        min-height: 340px;
+        color: var(--white);
+      }
+
+      .mini-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+        font-weight: 700;
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #8ff7b1;
+        display: inline-block;
+        margin-right: 8px;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+        margin-top: 18px;
+      }
+
+      .stat-box {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 16px;
+        padding: 18px 16px;
+      }
+
+      .stat-num {
+        display: block;
+        font-size: 2rem;
+        font-weight: 700;
+      }
+
+      .stat-label {
+        color: rgba(255,255,255,0.8);
+        font-size: 0.85rem;
+      }
+
+      section {
+        padding: 88px 0;
+      }
+
+      .section-heading {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 42px;
+      }
+
+      .section-heading h2 {
+        margin: 0 0 14px;
+        font-size: clamp(2rem, 3vw, 3rem);
+        color: var(--secondary);
+      }
+
+      .section-heading p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 1.02rem;
+      }
+
+      .features-grid,
+      .program-grid,
+      .contact-grid {
+        display: grid;
+        gap: 24px;
+      }
+
+      .features-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .feature-card,
+      .program-card,
+      .contact-box {
+        background: var(--white);
+        border-radius: 20px;
+        padding: 28px 24px;
+        box-shadow: var(--shadow);
+      }
+
+      .feature-icon {
+        width: 62px;
+        height: 62px;
+        border-radius: 16px;
+        display: grid;
+        place-items: center;
+        font-size: 1.5rem;
+        background: rgba(47, 93, 255, 0.08);
+        color: var(--primary);
+        margin-bottom: 18px;
+      }
+
+      .feature-card h3,
+      .program-card h3,
+      .contact-box h3 {
+        margin: 0 0 10px;
+        font-size: 1.3rem;
+        color: var(--secondary);
+      }
+
+      .feature-card p,
+      .program-card p,
+      .contact-box p,
+      .contact-box li {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .program-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .program-card {
+        border-top: 4px solid var(--primary);
+      }
+
+      .program-card .badge {
+        display: inline-block;
+        margin-bottom: 12px;
+        padding: 6px 10px;
+        background: rgba(47, 93, 255, 0.08);
+        color: var(--primary);
+        border-radius: 999px;
+        font-size: 0.75rem;
+        font-weight: 700;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1.2fr 0.8fr;
+      }
+
+      .contact-box ul {
+        list-style: none;
+        padding: 0;
+        margin-top: 18px;
+        display: grid;
+        gap: 10px;
+      }
+
+      .contact-box li {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+      }
+
+      .contact-box li::before {
+        content: "•";
+        color: var(--primary);
+        font-size: 1.5rem;
+        line-height: 1;
+      }
+
+      .cta-section {
+        background: linear-gradient(135deg, var(--secondary) 0%, #1d356f 100%);
+        color: var(--white);
+        padding: 72px 0;
+      }
+
+      .cta-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+      }
+
+      .cta-wrap h2 {
+        margin: 0 0 10px;
+        font-size: clamp(2rem, 3vw, 2.7rem);
+      }
+
+      .cta-wrap p {
+        margin: 0;
+        color: rgba(255,255,255,0.8);
+      }
+
+      footer {
+        background: #0d1530;
+        color: rgba(255,255,255,0.8);
+        padding: 34px 0;
+      }
+
+      .footer-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      @media (max-width: 900px) {
+        .hero-grid,
+        .features-grid,
+        .program-grid,
+        .contact-grid,
+        .cta-wrap {
+          grid-template-columns: 1fr;
+          display: grid;
         }
-        body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+
+        nav {
+          display: none;
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
+
+        .cta-wrap {
+          display: grid;
         }
-        header {
-            text-align: center;
-            color: white;
-            margin-bottom: 50px;
-        }
-        header h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-        }
-        header p {
-            font-size: 1.2em;
-            opacity: 0.9;
-        }
-        .content {
-            background: white;
-            border-radius: 10px;
-            padding: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-        .content h2 {
-            color: #667eea;
-            margin-bottom: 20px;
-        }
-        .content p {
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-        .feature {
-            background: #f4f4f4;
-            padding: 20px;
-            border-radius: 8px;
-            border-left: 4px solid #667eea;
-        }
-        .feature h3 {
-            color: #667eea;
-            margin-bottom: 10px;
-        }
-        footer {
-            text-align: center;
-            color: white;
-            margin-top: 50px;
-            padding: 20px;
-        }
+      }
     </style>
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>🎓 Goergenexus School</h1>
-            <p>K-12 Education Platform</p>
-        </header>
-        
-        <div class="content">
-            <h2>Welcome to Our School</h2>
-            <p>
-                Goergenexus School is a comprehensive K-12 education platform designed to provide 
-                quality education and support for students at all levels. Our mission is to foster 
-                academic excellence and personal growth.
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <a href="#top" class="brand" aria-label="Goergenexus School home">
+          <span class="brand-mark">G</span>
+          <span>Goergenexus School</span>
+        </a>
+
+        <nav aria-label="Main navigation">
+          <a href="#about">About</a>
+          <a href="#programs">Programs</a>
+          <a href="#features">Features</a>
+          <a href="#contact">Contact</a>
+          <a href="#contact" class="cta">Apply Now</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <span class="eyebrow">Quality Education</span>
+            <h1>Empowering students for a brighter future.</h1>
+            <p class="lead">
+              Goergenexus School is a nurturing K-12 environment where students grow
+              academically, creatively, and socially through innovative learning and caring support.
             </p>
-            
-            <div class="features">
-                <div class="feature">
-                    <h3>📚 Comprehensive Curriculum</h3>
-                    <p>Access to a complete range of subjects from elementary through high school.</p>
-                </div>
-                <div class="feature">
-                    <h3>👨‍🏫 Experienced Teachers</h3>
-                    <p>Learn from dedicated educators committed to your success.</p>
-                </div>
-                <div class="feature">
-                    <h3>🌐 Online & Interactive</h3>
-                    <p>Modern learning tools and interactive resources for effective education.</p>
-                </div>
+
+            <div class="hero-actions">
+              <a href="#contact" class="button-primary">Enroll Today</a>
+              <a href="#about" class="button-secondary">Learn More</a>
             </div>
+          </div>
+
+          <div class="hero-card">
+            <div class="dashboard">
+              <div class="mini-header">
+                <span><span class="dot"></span>School Overview</span>
+                <span>2026</span>
+              </div>
+
+              <div class="stats-grid">
+                <div class="stat-box">
+                  <span class="stat-num">1,200+</span>
+                  <span class="stat-label">Students</span>
+                </div>
+                <div class="stat-box">
+                  <span class="stat-num">32</span>
+                  <span class="stat-label">Classrooms</span>
+                </div>
+                <div class="stat-box">
+                  <span class="stat-num">95%</span>
+                  <span class="stat-label">Satisfaction</span>
+                </div>
+                <div class="stat-box">
+                  <span class="stat-num">18</span>
+                  <span class="stat-label">Programs</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        
-        <footer>
-            <p>&copy; 2026 Goergenexus School. All rights reserved.</p>
-        </footer>
-    </div>
-</body>
+      </section>
+
+      <section id="about">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Why families choose Goergenexus</h2>
+            <p>
+              We combine academic excellence, personal development, and a caring school community
+              to help every learner thrive.
+            </p>
+          </div>
+
+          <div class="features-grid" id="features">
+            <article class="feature-card">
+              <div class="feature-icon">📚</div>
+              <h3>Strong Academics</h3>
+              <p>
+                Rigorous curriculums in literacy, math, science, and the arts that build confidence and mastery.
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon">🤝</div>
+              <h3>Student Support</h3>
+              <p>
+                Personalized mentoring and guidance help students grow emotionally, socially, and academically.
+              </p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-icon">🚀</div>
+              <h3>Future Ready</h3>
+              <p>
+                We encourage creativity, leadership, and critical thinking so students are prepared for tomorrow.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="programs">
+        <div class="container">
+          <div class="section-heading">
+            <h2>Programs designed for growth</h2>
+            <p>
+              Every stage of learning is supported with engaging, meaningful experiences.
+            </p>
+          </div>
+
+          <div class="program-grid">
+            <article class="program-card">
+              <span class="badge">Primary</span>
+              <h3>Elementary Learning</h3>
+              <p>
+                Hands-on and interactive instruction that builds foundational skills in literacy, numeracy, and inquiry.
+              </p>
+            </article>
+
+            <article class="program-card">
+              <span class="badge">Middle</span>
+              <h3>Middle School</h3>
+              <p>
+                A balanced approach to STEM, communication, leadership, and creative exploration during a key developmental stage.
+              </p>
+            </article>
+
+            <article class="program-card">
+              <span class="badge">High</span>
+              <h3>High School Excellence</h3>
+              <p>
+                College preparation, advanced coursework, and mentorship focused on future success and personal achievement.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="container contact-grid">
+          <div class="contact-box">
+            <h3>Let’s build a bright learning journey together.</h3>
+            <p>
+              We welcome families who value excellence, care, and a strong community for their children.
+            </p>
+          </div>
+
+          <div class="contact-box">
+            <h3>Contact</h3>
+            <ul>
+              <li>Admissions and enrollment support</li>
+              <li>School tours and meeting requests</li>
+              <li>Questions about programs and schedules</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <div class="container cta-wrap">
+          <div>
+            <h2>Start your child’s journey with us.</h2>
+            <p>Quality education, strong community, and a future focused foundation.</p>
+          </div>
+          <a href="#contact" class="cta">Apply Now</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <span>© 2026 Goergenexus School</span>
+        <span>Building Bright Futures</span>
+      </div>
+    </footer>
+  </body>
 </html>
