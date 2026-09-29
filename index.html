@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="az">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -77,6 +77,12 @@
             font-weight: 800;
         }
 
+        .top-actions {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
         nav {
             display: flex;
             align-items: center;
@@ -89,6 +95,30 @@
         }
 
         nav a:hover { color: var(--white); }
+
+        .language-switcher {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 999px;
+            padding: 6px 10px;
+        }
+
+        .language-switcher select {
+            background: transparent;
+            color: white;
+            border: none;
+            outline: none;
+            font-size: 0.82rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .language-switcher option {
+            color: #0d2039;
+        }
 
         .cta-btn {
             display: inline-flex;
@@ -601,64 +631,75 @@
         <div class="container header-inner">
             <div class="brand">
                 <div class="brand-mark">G</div>
-                <span>Goergenexus</span>
+                <span data-i18n="brandName">Goergenexus</span>
             </div>
 
-            <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+            <div class="top-actions">
+                <div class="language-switcher">
+                    <select id="languageSelector" aria-label="Select language">
+                        <option value="az">AZ</option>
+                        <option value="ru">RU</option>
+                        <option value="tr">TR</option>
+                        <option value="en">EN</option>
+                    </select>
+                </div>
 
-            <nav aria-label="Main navigation">
-                <a href="#about">About</a>
-                <a href="#curriculum">Curriculum</a>
-                <a href="#study">Study</a>
-                <a href="#pathways">Pathways</a>
-                <a href="#contact" class="cta-btn">Enroll</a>
-            </nav>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+
+                <nav aria-label="Main navigation">
+                    <a href="#about" data-i18n="navAbout">About</a>
+                    <a href="#curriculum" data-i18n="navCurriculum">Curriculum</a>
+                    <a href="#study" data-i18n="navStudy">Study</a>
+                    <a href="#pathways" data-i18n="navPathways">Pathways</a>
+                    <a href="#contact" class="cta-btn" data-i18n="navEnroll">Enroll</a>
+                </nav>
+            </div>
         </div>
 
         <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
-            <a href="#about">About</a>
-            <a href="#curriculum">Curriculum</a>
-            <a href="#study">Study</a>
-            <a href="#pathways">Pathways</a>
-            <a href="#contact" class="cta-btn">Enroll</a>
+            <a href="#about" data-i18n="navAbout">About</a>
+            <a href="#curriculum" data-i18n="navCurriculum">Curriculum</a>
+            <a href="#study" data-i18n="navStudy">Study</a>
+            <a href="#pathways" data-i18n="navPathways">Pathways</a>
+            <a href="#contact" class="cta-btn" data-i18n="navEnroll">Enroll</a>
         </nav>
     </header>
 
     <section class="hero" id="about">
         <div class="container hero-inner">
             <div>
-                <div class="eyebrow">Global online education</div>
-                <h1>Globally connected:<span class="gold">my academic journey</span></h1>
-                <div class="hero-copy">
+                <div class="eyebrow" data-i18n="heroEyebrow">Global online education</div>
+                <h1><span data-i18n="heroHeadlinePart1">Globally connected:</span><span class="gold" data-i18n="heroHeadlinePart2">my academic journey</span></h1>
+                <div class="hero-copy" data-i18n="heroText">
                     Goergenexus School helps students in Grades 9–12 complete a high-quality US-aligned online education from home, while building strong foundations for university access around the world.
                 </div>
                 <div class="hero-actions">
-                    <a href="#contact" class="btn btn-primary">Start learning</a>
-                    <a href="#curriculum" class="btn btn-secondary">Explore programs</a>
+                    <a href="#contact" class="btn btn-primary" data-i18n="btnStartLearning">Start learning</a>
+                    <a href="#curriculum" class="btn btn-secondary" data-i18n="btnExplorePrograms">Explore programs</a>
                 </div>
             </div>
 
             <div class="stats-panel">
                 <div class="mini-head">
-                    <span><span class="mini-dot"></span>School overview</span>
+                    <span><span class="mini-dot"></span><span data-i18n="schoolOverview">School overview</span></span>
                     <span>2026</span>
                 </div>
                 <div class="stats-grid">
                     <div class="stat-box">
                         <strong>9–12</strong>
-                        <span>Grade levels</span>
+                        <span data-i18n="statGradeLevels">Grade levels</span>
                     </div>
                     <div class="stat-box">
                         <strong>100%</strong>
-                        <span>Online study</span>
+                        <span data-i18n="statOnlineStudy">Online study</span>
                     </div>
                     <div class="stat-box">
                         <strong>US</strong>
-                        <span>Diploma focus</span>
+                        <span data-i18n="statDiplomaFocus">Diploma focus</span>
                     </div>
                     <div class="stat-box">
-                        <strong>Global</strong>
-                        <span>University pathway</span>
+                        <strong data-i18n="statGlobalWord">Global</strong>
+                        <span data-i18n="statUniversityPathway">University pathway</span>
                     </div>
                 </div>
             </div>
@@ -667,23 +708,23 @@
 
     <section class="section">
         <div class="container">
-            <span class="section-tag">Why choose us</span>
-            <h2 class="section-title">A strong academic foundation for students who want global opportunities</h2>
+            <span class="section-tag" data-i18n="whyChooseUsTag">Why choose us</span>
+            <h2 class="section-title" data-i18n="whyChooseUsTitle">A strong academic foundation for students who want global opportunities</h2>
             <div class="feature-grid">
                 <div class="card">
                     <div class="feature-icon">🎓</div>
-                    <h3>US high school pathway</h3>
-                    <p>Students follow a structured curriculum aligned to rigorous high school standards, preparing them for university study and future academic success.</p>
+                    <h3 data-i18n="feature1Title">US high school pathway</h3>
+                    <p data-i18n="feature1Text">Students follow a structured curriculum aligned to rigorous high school standards, preparing them for university study and future academic success.</p>
                 </div>
                 <div class="card">
                     <div class="feature-icon">🏠</div>
-                    <h3>Study from home</h3>
-                    <p>Online instruction gives students flexibility to learn in a safe, comfortable environment while maintaining a high level of academic accountability.</p>
+                    <h3 data-i18n="feature2Title">Study from home</h3>
+                    <p data-i18n="feature2Text">Online instruction gives students flexibility to learn in a safe, comfortable environment while maintaining a high level of academic accountability.</p>
                 </div>
                 <div class="card">
                     <div class="feature-icon">🌍</div>
-                    <h3>Global university readiness</h3>
-                    <p>Curriculum and academic guidance are designed to help students build the skills needed in international university applications and admissions processes.</p>
+                    <h3 data-i18n="feature3Title">Global university readiness</h3>
+                    <p data-i18n="feature3Text">Curriculum and academic guidance are designed to help students build the skills needed in international university applications and admissions processes.</p>
                 </div>
             </div>
         </div>
@@ -691,50 +732,50 @@
 
     <section class="section" id="curriculum">
         <div class="container">
-            <span class="section-tag">Programs</span>
-            <h2 class="section-title">Academic programs and learning tracks for Grades 9–12</h2>
+            <span class="section-tag" data-i18n="programsTag">Programs</span>
+            <h2 class="section-title" data-i18n="programsTitle">Academic programs and learning tracks for Grades 9–12</h2>
             <div class="program-grid">
                 <article class="program-card">
-                    <span class="program-badge">Grade 9</span>
-                    <h3>Foundations</h3>
-                    <p>Build confidence in core academic subjects and strengthen learning habits, literacy, and quantitative skills.</p>
+                    <span class="program-badge" data-i18n="grade9Badge">Grade 9</span>
+                    <h3 data-i18n="grade9Title">Foundations</h3>
+                    <p data-i18n="grade9Text">Build confidence in core academic subjects and strengthen learning habits, literacy, and quantitative skills.</p>
                     <ul>
-                        <li>English and writing</li>
-                        <li>Algebra and geometry</li>
-                        <li>Biology and social studies</li>
+                        <li data-i18n="grade9Item1">English and writing</li>
+                        <li data-i18n="grade9Item2">Algebra and geometry</li>
+                        <li data-i18n="grade9Item3">Biology and social studies</li>
                     </ul>
                 </article>
 
                 <article class="program-card">
-                    <span class="program-badge">Grade 10</span>
-                    <h3>Core growth</h3>
-                    <p>Students deepen knowledge in STEM, humanities, and communication while preparing for advanced studies.</p>
+                    <span class="program-badge" data-i18n="grade10Badge">Grade 10</span>
+                    <h3 data-i18n="grade10Title">Core growth</h3>
+                    <p data-i18n="grade10Text">Students deepen knowledge in STEM, humanities, and communication while preparing for advanced studies.</p>
                     <ul>
-                        <li>Advanced science</li>
-                        <li>World history</li>
-                        <li>Research and presentation skills</li>
+                        <li data-i18n="grade10Item1">Advanced science</li>
+                        <li data-i18n="grade10Item2">World history</li>
+                        <li data-i18n="grade10Item3">Research and presentation skills</li>
                     </ul>
                 </article>
 
                 <article class="program-card">
-                    <span class="program-badge">Grade 11</span>
-                    <h3>College prep</h3>
-                    <p>Rigorous coursework and university preparation support help students strengthen academic performance and readiness.</p>
+                    <span class="program-badge" data-i18n="grade11Badge">Grade 11</span>
+                    <h3 data-i18n="grade11Title">College prep</h3>
+                    <p data-i18n="grade11Text">Rigorous coursework and university preparation support help students strengthen academic performance and readiness.</p>
                     <ul>
-                        <li>Pre-calculus</li>
-                        <li>Physics and chemistry</li>
-                        <li>Academic advising</li>
+                        <li data-i18n="grade11Item1">Pre-calculus</li>
+                        <li data-i18n="grade11Item2">Physics and chemistry</li>
+                        <li data-i18n="grade11Item3">Academic advising</li>
                     </ul>
                 </article>
 
                 <article class="program-card">
-                    <span class="program-badge">Grade 12</span>
-                    <h3>Graduation</h3>
-                    <p>Final-year support focuses on academic mastery, university pathway planning, and graduation completion.</p>
+                    <span class="program-badge" data-i18n="grade12Badge">Grade 12</span>
+                    <h3 data-i18n="grade12Title">Graduation</h3>
+                    <p data-i18n="grade12Text">Final-year support focuses on academic mastery, university pathway planning, and graduation completion.</p>
                     <ul>
-                        <li>Senior academic subjects</li>
-                        <li>Application readiness</li>
-                        <li>Capstone and career planning</li>
+                        <li data-i18n="grade12Item1">Senior academic subjects</li>
+                        <li data-i18n="grade12Item2">Application readiness</li>
+                        <li data-i18n="grade12Item3">Capstone and career planning</li>
                     </ul>
                 </article>
             </div>
@@ -744,16 +785,16 @@
     <section class="study-banner" id="study">
         <div class="container study-inner">
             <div>
-                <span class="section-tag" style="text-align:left; color: var(--gold-2);">Learning model</span>
-                <h2>Online learning designed for discipline, flexibility, and progress</h2>
-                <p>Goergenexus School combines structured teaching with flexible access to digital learning tools, helping students stay engaged while learning from home. Students benefit from a blended teaching approach, teacher feedback, and accessible course materials.</p>
+                <span class="section-tag" style="text-align:left; color: var(--gold-2);" data-i18n="learningModelTag">Learning model</span>
+                <h2 data-i18n="learningModelTitle">Online learning designed for discipline, flexibility, and progress</h2>
+                <p data-i18n="learningModelText">Goergenexus School combines structured teaching with flexible access to digital learning tools, helping students stay engaged while learning from home. Students benefit from a blended teaching approach, teacher feedback, and accessible course materials.</p>
             </div>
             <ul class="study-checks">
-                <li>Live online instruction and teacher support</li>
-                <li>Recorded lessons and self-paced review</li>
-                <li>Assignments, assessments, and progress tracking</li>
-                <li>Digital learning resources and guided study plans</li>
-                <li>University application and academic counseling</li>
+                <li data-i18n="studyItem1">Live online instruction and teacher support</li>
+                <li data-i18n="studyItem2">Recorded lessons and self-paced review</li>
+                <li data-i18n="studyItem3">Assignments, assessments, and progress tracking</li>
+                <li data-i18n="studyItem4">Digital learning resources and guided study plans</li>
+                <li data-i18n="studyItem5">University application and academic counseling</li>
             </ul>
         </div>
     </section>
@@ -770,18 +811,18 @@
                 </div>
             </div>
             <div class="course-copy">
-                <span class="section-tag" style="text-align:left;">Curriculum focus</span>
-                <h3>Subjects that prepare students for real-world academic growth</h3>
-                <p>Our program integrates core academic disciplines with practical thinking, communication, research, and digital literacy. Students are encouraged to become independent learners while building strong academic habits.</p>
+                <span class="section-tag" style="text-align:left;" data-i18n="curriculumFocusTag">Curriculum focus</span>
+                <h3 data-i18n="curriculumFocusTitle">Subjects that prepare students for real-world academic growth</h3>
+                <p data-i18n="curriculumFocusText">Our program integrates core academic disciplines with practical thinking, communication, research, and digital literacy. Students are encouraged to become independent learners while building strong academic habits.</p>
                 <div class="tag-list">
-                    <span>English</span>
-                    <span>Mathematics</span>
-                    <span>Science</span>
-                    <span>History</span>
-                    <span>Business</span>
-                    <span>Technology</span>
-                    <span>Arts</span>
-                    <span>Research</span>
+                    <span data-i18n="tagEnglish">English</span>
+                    <span data-i18n="tagMath">Mathematics</span>
+                    <span data-i18n="tagScience">Science</span>
+                    <span data-i18n="tagHistory">History</span>
+                    <span data-i18n="tagBusiness">Business</span>
+                    <span data-i18n="tagTechnology">Technology</span>
+                    <span data-i18n="tagArts">Arts</span>
+                    <span data-i18n="tagResearch">Research</span>
                 </div>
             </div>
         </div>
@@ -789,24 +830,24 @@
 
     <section class="section" id="pathways">
         <div class="container">
-            <span class="section-tag">University pathways</span>
-            <h2 class="section-title">Learning outcomes that support future university entry</h2>
+            <span class="section-tag" data-i18n="pathwaysTag">University pathways</span>
+            <h2 class="section-title" data-i18n="pathwaysTitle">Learning outcomes that support future university entry</h2>
             <div class="path-grid">
                 <div class="path-card">
-                    <strong>Academic readiness</strong>
-                    <p>Students strengthen analytical thinking, writing, problem-solving, and subject knowledge needed for a successful university transition.</p>
+                    <strong data-i18n="path1Title">Academic readiness</strong>
+                    <p data-i18n="path1Text">Students strengthen analytical thinking, writing, problem-solving, and subject knowledge needed for a successful university transition.</p>
                 </div>
                 <div class="path-card">
-                    <strong>Global perspective</strong>
-                    <p>Our learning model values international awareness, communication skills, and flexible thinking relevant to modern university systems.</p>
+                    <strong data-i18n="path2Title">Global perspective</strong>
+                    <p data-i18n="path2Text">Our learning model values international awareness, communication skills, and flexible thinking relevant to modern university systems.</p>
                 </div>
                 <div class="path-card">
-                    <strong>Career preparation</strong>
-                    <p>Students explore future opportunities through structured guidance, self-development, and academic planning aligned with long-term goals.</p>
+                    <strong data-i18n="path3Title">Career preparation</strong>
+                    <p data-i18n="path3Text">Students explore future opportunities through structured guidance, self-development, and academic planning aligned with long-term goals.</p>
                 </div>
                 <div class="path-card">
-                    <strong>Digital literacy</strong>
-                    <p>Students learn how to use online tools, collaborate effectively, and perform academic work in technology-supported environments.</p>
+                    <strong data-i18n="path4Title">Digital literacy</strong>
+                    <p data-i18n="path4Text">Students learn how to use online tools, collaborate effectively, and perform academic work in technology-supported environments.</p>
                 </div>
             </div>
         </div>
@@ -814,21 +855,409 @@
 
     <section class="cta-banner" id="contact">
         <div class="container">
-            <h2>Begin your educational journey with Goergenexus</h2>
-            <p>Grades 9–12 online learning with a strong focus on academic achievement, personal development, and future university access.</p>
-            <a href="mailto:info@goergenexus.edu" class="cta-btn">Apply now</a>
+            <h2 data-i18n="ctaTitle">Begin your educational journey with Goergenexus</h2>
+            <p data-i18n="ctaText">Grades 9–12 online learning with a strong focus on academic achievement, personal development, and future university access.</p>
+            <a href="mailto:info@goergenexus.edu" class="cta-btn" data-i18n="ctaButton">Apply now</a>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p><strong>Goergenexus School</strong></p>
-            <p>Online Grades 9–12 • US-aligned curriculum • Global university access</p>
-            <p>&copy; 2026 Goergenexus School LLC</p>
+            <p><strong data-i18n="footerBrand">Goergenexus School</strong></p>
+            <p data-i18n="footerText">Online Grades 9–12 • US-aligned curriculum • Global university access</p>
+            <p data-i18n="footerCopy">&copy; 2026 Goergenexus School LLC</p>
         </div>
     </footer>
 
     <script>
+        const translations = {
+            az: {
+                brandName: 'Goergenexus',
+                navAbout: 'Haqqında',
+                navCurriculum: 'Tədris',
+                navStudy: 'Təhsil',
+                navPathways: 'Yollar',
+                navEnroll: 'Qeydiyyat',
+                heroEyebrow: 'Qlobal onlayn təhsil',
+                heroHeadlinePart1: 'Qlobal olaraq bağlı:',
+                heroHeadlinePart2: 'akademik səyahətim',
+                heroText: 'Goergenexus School tələbələrə 9–12-ci siniflər üçün evdən ABŞ standartlarına uyğun onlayn təhsil təqdim edir və dünya universitetlərinə hazırlıq üçün güclü əsas yaradır.',
+                btnStartLearning: 'Öyrənməyə başla',
+                btnExplorePrograms: 'Proqramları kəşf et',
+                schoolOverview: 'Məktəbə baxış',
+                statGradeLevels: 'Siniflər',
+                statOnlineStudy: 'Onlayn təhsil',
+                statDiplomaFocus: 'Diplom mərkəzi',
+                statGlobalWord: 'Qlobal',
+                statUniversityPathway: 'Universitet yolu',
+                whyChooseUsTag: 'Niyə biz?',
+                whyChooseUsTitle: 'Qlobal imkanlar istəyən tələbələr üçün möhkəm akademik zəmin',
+                feature1Title: 'ABŞ orta məktəb yolu',
+                feature1Text: 'Tələbələr ciddi orta məktəb standartlarına uyğun strukturlaşdırılmış kurikulumla çalışır və universitet üçün yaxşı hazırlıq görür.',
+                feature2Title: 'Evdən təhsil',
+                feature2Text: 'Onlayn tədris tələbələrə evdə təhlükəsiz və rahat şəkildə öyrənmək imkanı verir, eyni zamanda akademik məsuliyyəti qoruyur.',
+                feature3Title: 'Qlobal universitet hazırlığı',
+                feature3Text: 'Kurikulum və akademik rəhbərlik tələbələrə beynəlxalq universitet müraciəti və qəbul prosesində lazım olan bacarıqları inkişaf etdirməyə kömək edir.',
+                programsTag: 'Proqramlar',
+                programsTitle: '9–12-ci siniflər üçün akademik proqramlar və öyrənmə yolları',
+                grade9Badge: '9-cu sinif',
+                grade9Title: 'Əsaslar',
+                grade9Text: 'Əsas akademik fənlərdə özünə inam yaradın, oxu, yazı və riyaziyyat bacarıqlarını gücləndirin.',
+                grade9Item1: 'İngilis dili və yazı',
+                grade9Item2: 'Cəbr və həndəsə',
+                grade9Item3: 'Biologiya və ictimai elmlər',
+                grade10Badge: '10-cu sinif',
+                grade10Title: 'Əsas inkişaf',
+                grade10Text: 'Tələbələr STEM, humanitar fənlər və kommunikasiya sahəsində biliklərini dərinləşdirir.',
+                grade10Item1: 'Qabaqcıl elm',
+                grade10Item2: 'Dünya tarixi',
+                grade10Item3: 'Tədqiqat və təqdimat bacarıqları',
+                grade11Badge: '11-ci sinif',
+                grade11Title: 'Kollec hazırlığı',
+                grade11Text: 'Məhdud olmayan kurslar və universitet hazırlığı tələbələrin akademik nəticələrini gücləndirir.',
+                grade11Item1: 'Əvvəlcədən hesablama',
+                grade11Item2: 'Fizika və kimya',
+                grade11Item3: 'Akademik məsləhət',
+                grade12Badge: '12-ci sinif',
+                grade12Title: 'Məzuniyyət',
+                grade12Text: 'Final kursları akademik mərhələ, universitet yolu və məzuniyyət uğurunu təmin edir.',
+                grade12Item1: 'Yüksək sinif fənləri',
+                grade12Item2: 'Müraciət hazırlığı',
+                grade12Item3: 'Kurs və karyera planlaşdırma',
+                learningModelTag: 'Öyrənmə modeli',
+                learningModelTitle: 'Disiplin, çeviklik və irəliləyiş üçün onlayn təhsil',
+                learningModelText: 'Goergenexus School strukturlaşdırılmış tədris ilə onlayn digital alatlara asan giriş təmin edir. Tələbələr evdə öyrənərkən mütəmadi dəstək alır.',
+                studyItem1: 'Canlı onlayn dərslər və müəllim dəstəyi',
+                studyItem2: 'Yazılı dərslər və öz-özünə nəzərdən keçirmə',
+                studyItem3: 'Tapşırıqlar, qiymətləndirmələr və irəliləyiş izlənməsi',
+                studyItem4: 'Rəqəmsal öyrənmə materialları və təşkil edilmiş planlar',
+                studyItem5: 'Universitet müraciəti və akademik məsləhət',
+                curriculumFocusTag: 'Kurikulum fokus',
+                curriculumFocusTitle: 'Tələbələri real akademik böyüməyə hazırlayan fənlər',
+                curriculumFocusText: 'Proqram əsas akademik fənləri praktiki düşüncə, kommunikasiya, tədqiqat və rəqəmsal savadla birləşdirir.',
+                tagEnglish: 'İngilis dili',
+                tagMath: 'Riyaziyyat',
+                tagScience: 'Elm',
+                tagHistory: 'Tarix',
+                tagBusiness: 'Biznes',
+                tagTechnology: 'Texnologiya',
+                tagArts: 'İncəsənət',
+                tagResearch: 'Tədqiqat',
+                pathwaysTag: 'Universitet yolları',
+                pathwaysTitle: 'Gələcək universitet girişi üçün öyrənmə nəticələri',
+                path1Title: 'Akademik hazırlıq',
+                path1Text: 'Tələbələr analitik düşüncə, yazı, problemləri həll etmə və fənlər üzrə biliklərini gücləndirirlər.',
+                path2Title: 'Qlobal baxış',
+                path2Text: 'Öyrənmə modelimiz beynəlxalq düşüncəni, kommunikasiya bacarıqlarını və müasir universitet sistemlərinə uyğun çevikliyi qiymətləndirir.',
+                path3Title: 'Karyera hazırlığı',
+                path3Text: 'Tələbələr strukturlaşdırılmış rəhbərlik və planlaşdırma vasitəsilə gələcək iş və akademik məqsədlərinə hazırlanırlar.',
+                path4Title: 'Rəqəmsal savad',
+                path4Text: 'Tələbələr onlayn alətlərdən istifadə etməyi, birlikdə işləməyi və rəqəmsal mühitdə akademik iş aparmağı öyrənirlər.',
+                ctaTitle: 'Goergenexus ilə təhsil səyahətinizə başlayın',
+                ctaText: '9–12-ci siniflər üçün onlayn təhsil, akademik nailiyyətlər, şəxsi inkişaf və gələcək universitet imkanı.',
+                ctaButton: 'İndi müraciət edin',
+                footerBrand: 'Goergenexus School',
+                footerText: 'Onlayn 9–12 siniflər • ABŞ-uyğun tədris • Qlobal universitet imkanı',
+                footerCopy: '© 2026 Goergenexus School LLC'
+            },
+            ru: {
+                brandName: 'Goergenexus',
+                navAbout: 'О школе',
+                navCurriculum: 'Программа',
+                navStudy: 'Обучение',
+                navPathways: 'Пути',
+                navEnroll: 'Запись',
+                heroEyebrow: 'Глобальное онлайн-образование',
+                heroHeadlinePart1: 'Глобально соединён:',
+                heroHeadlinePart2: 'мой академический путь',
+                heroText: 'Goergenexus School помогает школьникам 9–12 классов получать качественное онлайн-образование в США из дома и закладывает основу для поступления в университеты мира.',
+                btnStartLearning: 'Начать обучение',
+                btnExplorePrograms: 'Изучить программы',
+                schoolOverview: 'Обзор школы',
+                statGradeLevels: 'Классы',
+                statOnlineStudy: 'Онлайн-обучение',
+                statDiplomaFocus: 'Направление диплома',
+                statGlobalWord: 'Глобально',
+                statUniversityPathway: 'Путь в университет',
+                whyChooseUsTag: 'Почему выбирают нас',
+                whyChooseUsTitle: 'Сильная академическая база для студентов, стремящихся к глобальным возможностям',
+                feature1Title: 'Путь к американской школе',
+                feature1Text: 'Студенты проходят структурированную программу, соответствующую строгим стандартам старшей школы, что готовит их к университетскому обучению.',
+                feature2Title: 'Учёба дома',
+                feature2Text: 'Онлайн-обучение даёт гибкость и комфорт, сохраняя высокий уровень академической ответственности.',
+                feature3Title: 'Глобальная готовность к университету',
+                feature3Text: 'Программа и академическая поддержка помогают развивать необходимые навыки для международных поступлений.',
+                programsTag: 'Программы',
+                programsTitle: 'Академические программы для классов 9–12',
+                grade9Badge: '9 класс',
+                grade9Title: 'Основы',
+                grade9Text: 'Укрепляйте уверенность в основных предметах и развивайте навыки чтения, письма и математики.',
+                grade9Item1: 'Английский и письмо',
+                grade9Item2: 'Алгебра и геометрия',
+                grade9Item3: 'Биология и обществознание',
+                grade10Badge: '10 класс',
+                grade10Title: 'Рост знаний',
+                grade10Text: 'Студенты углубляют знания в STEM, гуманитарных науках и коммуникации.',
+                grade10Item1: 'Продвинутая наука',
+                grade10Item2: 'Мировая история',
+                grade10Item3: 'Навыки исследования и выступления',
+                grade11Badge: '11 класс',
+                grade11Title: 'Подготовка к колледжу',
+                grade11Text: 'Жёсткие курсы и поддержка в подготовке к университету повышают академическую готовность.',
+                grade11Item1: 'Предварительный расчёт',
+                grade11Item2: 'Физика и химия',
+                grade11Item3: 'Академическое консультирование',
+                grade12Badge: '12 класс',
+                grade12Title: 'Выпуск',
+                grade12Text: 'Поддержка в выпускном году помогает завершить обучение и подготовиться к университетскому пути.',
+                grade12Item1: 'Старшие предметы',
+                grade12Item2: 'Подготовка к поступлению',
+                grade12Item3: 'Капстоуны и карьерное планирование',
+                learningModelTag: 'Модель обучения',
+                learningModelTitle: 'Онлайн-обучение, гибкость и постоянный прогресс',
+                learningModelText: 'Goergenexus School сочетает структурированное обучение с гибким доступом к цифровым ресурсам и поддержкой преподавателей.',
+                studyItem1: 'Живые онлайн-занятия и поддержка учителей',
+                studyItem2: 'Записанные уроки и самостоятельный пересмотр',
+                studyItem3: 'Задания, оценки и отслеживание прогресса',
+                studyItem4: 'Цифровые ресурсы и индивидуальные планы обучения',
+                studyItem5: 'Поступление в университет и академическое консультирование',
+                curriculumFocusTag: 'Фокус программы',
+                curriculumFocusTitle: 'Предметы, которые готовят студентов к реальному академическому росту',
+                curriculumFocusText: 'Наша программа объединяет базовые академические дисциплины с практическим мышлением, коммуникацией, исследованием и цифровой грамотностью.',
+                tagEnglish: 'Английский',
+                tagMath: 'Математика',
+                tagScience: 'Наука',
+                tagHistory: 'История',
+                tagBusiness: 'Бизнес',
+                tagTechnology: 'Технологии',
+                tagArts: 'Искусство',
+                tagResearch: 'Исследования',
+                pathwaysTag: 'Университетские пути',
+                pathwaysTitle: 'Результаты обучения, поддерживающие поступление в университет',
+                path1Title: 'Академическая готовность',
+                path1Text: 'Студенты развивают аналитическое мышление, письмо, решение задач и знания по предметам.',
+                path2Title: 'Глобальная перспектива',
+                path2Text: 'Наша модель обучения ценит международное сознание, навыки общения и гибкость мышления.',
+                path3Title: 'Подготовка к карьере',
+                path3Text: 'Студенты исследуют возможности будущего через структурированное руководство и планирование.',
+                path4Title: 'Цифровая грамотность',
+                path4Text: 'Студенты учатся использовать онлайн-инструменты и работать в цифровой среде.',
+                ctaTitle: 'Начните образовательное путешествие с Goergenexus',
+                ctaText: 'Онлайн-обучение для 9–12 классов с акцентом на академический рост и университетские возможности.',
+                ctaButton: 'Подать заявку',
+                footerBrand: 'Goergenexus School',
+                footerText: 'Онлайн 9–12 классы • Уровень образования США • Глобальный доступ в университет',
+                footerCopy: '© 2026 Goergenexus School LLC'
+            },
+            tr: {
+                brandName: 'Goergenexus',
+                navAbout: 'Hakkında',
+                navCurriculum: 'Müfredat',
+                navStudy: 'Öğrenim',
+                navPathways: 'Yollar',
+                navEnroll: 'Kayıt',
+                heroEyebrow: 'Küresel online eğitim',
+                heroHeadlinePart1: 'Küresel olarak bağlı:',
+                heroHeadlinePart2: 'akademik yolculuğum',
+                heroText: 'Goergenexus School, 9–12. sınıflar için evden ABD standardına uygun online eğitim sunar ve küresel üniversite yolculuğu için sağlam bir temel oluşturur.',
+                btnStartLearning: 'Öğrenmeye başla',
+                btnExplorePrograms: 'Programları keşfet',
+                schoolOverview: 'Okul özeti',
+                statGradeLevels: 'Sınıf seviyeleri',
+                statOnlineStudy: 'Online eğitim',
+                statDiplomaFocus: 'Diploma odağı',
+                statGlobalWord: 'Küresel',
+                statUniversityPathway: 'Üniversite yolu',
+                whyChooseUsTag: 'Neden bizi seçsinler',
+                whyChooseUsTitle: 'Küresel fırsatlar isteyen öğrenciler için güçlü akademik temel',
+                feature1Title: 'ABD lise yolu',
+                feature1Text: 'Öğrenciler, sıkı lise standartlarına uygun yapısal bir müfredata göre çalışır ve üniversite için hazırlık görür.',
+                feature2Title: 'Evden öğrenme',
+                feature2Text: 'Online eğitim, öğrencilerin güvenli ve rahat ortamda öğrenmesini sağlarken aynı zamanda akademik sorumluluğu korur.',
+                feature3Title: 'Küresel üniversite hazırlığı',
+                feature3Text: 'Müfredat ve akademik rehberlik, öğrencilerin uluslararası üniversite başvurularında gerekli becerileri geliştirmesine yardımcı olur.',
+                programsTag: 'Programlar',
+                programsTitle: '9–12. sınıf için akademik programlar ve öğrenim yolları',
+                grade9Badge: '9. sınıf',
+                grade9Title: 'Temeller',
+                grade9Text: 'Temel akademik konularda güven oluşturun ve okuma, yazma, matematik becerilerini güçlendirin.',
+                grade9Item1: 'İngilizce ve yazma',
+                grade9Item2: 'Cebir ve geometri',
+                grade9Item3: 'Biyoloji ve sosyal bilgiler',
+                grade10Badge: '10. sınıf',
+                grade10Title: 'Temel gelişim',
+                grade10Text: 'Öğrenciler STEM, beşeri bilimler ve iletişim alanlarında bilgi derinliğini artırır.',
+                grade10Item1: 'İleri bilim',
+                grade10Item2: 'Dünya tarihi',
+                grade10Item3: 'Araştırma ve sunum yetkinliği',
+                grade11Badge: '11. sınıf',
+                grade11Title: 'Kolej hazırlığı',
+                grade11Text: 'Zorlu dersler ve üniversite hazırlığı, öğrencilerin akademik performansını artırır.',
+                grade11Item1: 'Ön hesap',
+                grade11Item2: 'Fizik ve kimya',
+                grade11Item3: 'Akademik danışmanlık',
+                grade12Badge: '12. sınıf',
+                grade12Title: 'Mezuniyet',
+                grade12Text: 'Son yıl desteği, akademik ustalık, üniversite planlaması ve mezuniyet hedeflerini güçlendirir.',
+                grade12Item1: 'Lise seviyesi dersler',
+                grade12Item2: 'Başvuru hazırlığı',
+                grade12Item3: 'Bitirme ve kariyer planlaması',
+                learningModelTag: 'Öğrenme modeli',
+                learningModelTitle: 'Disiplin, esneklik ve ilerleme için online öğrenim',
+                learningModelText: 'Goergenexus School, yapılandırılmış öğrenim ile dijital kaynaklara kolay erişimi birleştirir. Öğrenciler evden öğrenirken öğretmen desteği alır.',
+                studyItem1: 'Canlı online dersler ve öğretmen desteği',
+                studyItem2: 'Kaydedilmiş dersler ve kendi kendine tekrar',
+                studyItem3: 'Ödevler, değerlendirmeler ve ilerleme takibi',
+                studyItem4: 'Dijital kaynaklar ve rehberli çalışma planları',
+                studyItem5: 'Üniversite başvurusu ve akademik danışmanlık',
+                curriculumFocusTag: 'Müfredat odağı',
+                curriculumFocusTitle: 'Öğrencileri gerçek akademik büyümeye hazırlayan dersler',
+                curriculumFocusText: 'Program, temel akademik disiplinleri pratik düşünce, iletişim, araştırma ve dijital okuryazarlıkla birleştirir.',
+                tagEnglish: 'İngilizce',
+                tagMath: 'Matematik',
+                tagScience: 'Fen',
+                tagHistory: 'Tarih',
+                tagBusiness: 'İş',
+                tagTechnology: 'Teknoloji',
+                tagArts: 'Sanat',
+                tagResearch: 'Araştırma',
+                pathwaysTag: 'Üniversite yolları',
+                pathwaysTitle: 'Gelecek üniversite girişi için öğrenme çıktıları',
+                path1Title: 'Akademik hazırlık',
+                path1Text: 'Öğrenciler analitik düşünme, yazma, problem çözme ve konu bilgisi geliştirmeye odaklanır.',
+                path2Title: 'Küresel bakış',
+                path2Text: 'Öğrenme modelimiz uluslararası farkındalık, iletişim becerileri ve modern üniversite sistemlerine uygun esnek düşünmeyi destekler.',
+                path3Title: 'Kariyer hazırlığı',
+                path3Text: 'Öğrenciler yapısal rehberlik ve planlama ile gelecek fırsatlarını keşfeder.',
+                path4Title: 'Dijital okuryazarlık',
+                path4Text: 'Öğrenciler online araçları kullanmayı, etkili iş birliği yapmayı ve dijital ortamda akademik çalışma yapmayı öğrenir.',
+                ctaTitle: 'Goergenexus ile eğitim yolculuğunuza başlayın',
+                ctaText: '9–12. sınıf online öğrenimi, akademik başarı, kişisel gelişim ve gelecek üniversite fırsatları.',
+                ctaButton: 'Şimdi başvur',
+                footerBrand: 'Goergenexus School',
+                footerText: 'Online 9–12. sınıflar • ABD uyumlu müfredat • Küresel üniversite erişimi',
+                footerCopy: '© 2026 Goergenexus School LLC'
+            },
+            en: {
+                brandName: 'Goergenexus',
+                navAbout: 'About',
+                navCurriculum: 'Curriculum',
+                navStudy: 'Study',
+                navPathways: 'Pathways',
+                navEnroll: 'Enroll',
+                heroEyebrow: 'Global online education',
+                heroHeadlinePart1: 'Globally connected:',
+                heroHeadlinePart2: 'my academic journey',
+                heroText: 'Goergenexus School helps students in Grades 9–12 complete a high-quality US-aligned online education from home while building strong foundations for global university access.',
+                btnStartLearning: 'Start learning',
+                btnExplorePrograms: 'Explore programs',
+                schoolOverview: 'School overview',
+                statGradeLevels: 'Grade levels',
+                statOnlineStudy: 'Online study',
+                statDiplomaFocus: 'Diploma focus',
+                statGlobalWord: 'Global',
+                statUniversityPathway: 'University pathway',
+                whyChooseUsTag: 'Why choose us',
+                whyChooseUsTitle: 'A strong academic foundation for students who want global opportunities',
+                feature1Title: 'US high school pathway',
+                feature1Text: 'Students follow a structured curriculum aligned to rigorous high school standards, preparing them for university study and future academic success.',
+                feature2Title: 'Study from home',
+                feature2Text: 'Online instruction gives students flexibility to learn in a safe, comfortable environment while maintaining a high level of academic accountability.',
+                feature3Title: 'Global university readiness',
+                feature3Text: 'Curriculum and academic guidance are designed to help students build the skills needed in international university applications and admissions processes.',
+                programsTag: 'Programs',
+                programsTitle: 'Academic programs and learning tracks for Grades 9–12',
+                grade9Badge: 'Grade 9',
+                grade9Title: 'Foundations',
+                grade9Text: 'Build confidence in core academic subjects and strengthen learning habits, literacy, and quantitative skills.',
+                grade9Item1: 'English and writing',
+                grade9Item2: 'Algebra and geometry',
+                grade9Item3: 'Biology and social studies',
+                grade10Badge: 'Grade 10',
+                grade10Title: 'Core growth',
+                grade10Text: 'Students deepen knowledge in STEM, humanities, and communication while preparing for advanced studies.',
+                grade10Item1: 'Advanced science',
+                grade10Item2: 'World history',
+                grade10Item3: 'Research and presentation skills',
+                grade11Badge: 'Grade 11',
+                grade11Title: 'College prep',
+                grade11Text: 'Rigorous coursework and university preparation support help students strengthen academic performance and readiness.',
+                grade11Item1: 'Pre-calculus',
+                grade11Item2: 'Physics and chemistry',
+                grade11Item3: 'Academic advising',
+                grade12Badge: 'Grade 12',
+                grade12Title: 'Graduation',
+                grade12Text: 'Final-year support focuses on academic mastery, university pathway planning, and graduation completion.',
+                grade12Item1: 'Senior academic subjects',
+                grade12Item2: 'Application readiness',
+                grade12Item3: 'Capstone and career planning',
+                learningModelTag: 'Learning model',
+                learningModelTitle: 'Online learning designed for discipline, flexibility, and progress',
+                learningModelText: 'Goergenexus School combines structured teaching with flexible access to digital learning tools, helping students stay engaged while learning from home.',
+                studyItem1: 'Live online instruction and teacher support',
+                studyItem2: 'Recorded lessons and self-paced review',
+                studyItem3: 'Assignments, assessments, and progress tracking',
+                studyItem4: 'Digital learning resources and guided study plans',
+                studyItem5: 'University application and academic counseling',
+                curriculumFocusTag: 'Curriculum focus',
+                curriculumFocusTitle: 'Subjects that prepare students for real-world academic growth',
+                curriculumFocusText: 'Our program integrates core academic disciplines with practical thinking, communication, research, and digital literacy. Students are encouraged to become independent learners while building strong academic habits.',
+                tagEnglish: 'English',
+                tagMath: 'Mathematics',
+                tagScience: 'Science',
+                tagHistory: 'History',
+                tagBusiness: 'Business',
+                tagTechnology: 'Technology',
+                tagArts: 'Arts',
+                tagResearch: 'Research',
+                pathwaysTag: 'University pathways',
+                pathwaysTitle: 'Learning outcomes that support future university entry',
+                path1Title: 'Academic readiness',
+                path1Text: 'Students strengthen analytical thinking, writing, problem-solving, and subject knowledge needed for a successful university transition.',
+                path2Title: 'Global perspective',
+                path2Text: 'Our learning model values international awareness, communication skills, and flexible thinking relevant to modern university systems.',
+                path3Title: 'Career preparation',
+                path3Text: 'Students explore future opportunities through structured guidance, self-development, and academic planning aligned with long-term goals.',
+                path4Title: 'Digital literacy',
+                path4Text: 'Students learn how to use online tools, collaborate effectively, and perform academic work in technology-supported environments.',
+                ctaTitle: 'Begin your educational journey with Goergenexus',
+                ctaText: 'Grades 9–12 online learning with a strong focus on academic achievement, personal development, and future university access.',
+                ctaButton: 'Apply now',
+                footerBrand: 'Goergenexus School',
+                footerText: 'Online Grades 9–12 • US-aligned curriculum • Global university access',
+                footerCopy: '© 2026 Goergenexus School LLC'
+            }
+        };
+
+        const selector = document.getElementById('languageSelector');
+        const savedLang = localStorage.getItem('goergenexus-lang') || 'az';
+        selector.value = savedLang;
+
+        function applyTranslations(lang) {
+            const dict = translations[lang] || translations.az;
+            document.documentElement.lang = lang;
+
+            document.querySelectorAll('[data-i18n]').forEach((el) => {
+                const key = el.dataset.i18n;
+                if (dict[key]) {
+                    el.textContent = dict[key];
+                }
+            });
+
+            document.title = lang === 'az' ? 'Goergenexus School | Online US High School Curriculum' :
+                lang === 'ru' ? 'Goergenexus School | Онлайн-учебная программа старшей школы США' :
+                lang === 'tr' ? 'Goergenexus School | Online ABD Lise Müfredatı' :
+                'Goergenexus School | Online US High School Curriculum';
+
+            localStorage.setItem('goergenexus-lang', lang);
+        }
+
+        selector.addEventListener('change', (event) => {
+            applyTranslations(event.target.value);
+        });
+
+        applyTranslations(savedLang);
+
         const menuToggle = document.getElementById('menuToggle');
         const mobileNav = document.getElementById('mobileNav');
         const links = mobileNav.querySelectorAll('a');
