@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Goergenexus School - US High School Diploma</title>
-    <meta name="description" content="Online Grades 9-12 US High School Diploma. Learn from home, gain global university access, and graduate with a recognized diploma.">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Goergenexus School | Online US High School Curriculum</title>
+    <meta name="description" content="Goergenexus School provides online Grades 9-12 US high school curriculum, academic support, and international university pathways." />
     <style>
         :root {
-            --navy: #0c203b;
-            --navy-2: #10284c;
+            --navy: #0d2039;
+            --navy-2: #17365f;
             --gold: #d7b874;
-            --gold-soft: #e7d19a;
-            --blue: #285ae6;
+            --gold-2: #f0d99a;
+            --blue: #2d5bff;
+            --light: #f4f7ff;
             --white: #ffffff;
-            --cream: #f4ead5;
-            --text: #1f2a37;
+            --text: #1d2736;
             --muted: #5d6877;
-            --shadow: 0 18px 40px rgba(5, 15, 32, 0.2);
+            --soft: #eef3ff;
+            --shadow: 0 20px 45px rgba(13, 32, 57, 0.12);
+            --radius: 22px;
         }
 
         * { box-sizing: border-box; }
@@ -24,44 +26,43 @@
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
-            background: linear-gradient(180deg, #eff4ff 0%, #edf2ff 100%);
+            background: linear-gradient(180deg, #eef4ff 0%, #edf3fb 100%);
             color: var(--text);
             line-height: 1.6;
         }
+
         a { text-decoration: none; color: inherit; }
         img { max-width: 100%; display: block; }
+        ul { list-style: none; margin: 0; padding: 0; }
 
         .container {
-            max-width: 1200px;
+            width: min(1200px, calc(100% - 32px));
             margin: 0 auto;
-            padding: 0 20px;
         }
 
         header {
-            background: rgba(15, 23, 42, 0.92);
-            backdrop-filter: blur(12px);
             position: sticky;
             top: 0;
             z-index: 1000;
+            backdrop-filter: blur(12px);
+            background: rgba(13, 32, 57, 0.92);
             border-bottom: 1px solid rgba(255,255,255,0.08);
         }
 
         .header-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            min-height: 70px;
+            min-height: 74px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 16px;
         }
 
         .brand {
             display: flex;
             align-items: center;
             gap: 12px;
-            color: white;
             font-weight: 700;
+            color: var(--white);
             letter-spacing: 0.02em;
         }
 
@@ -69,26 +70,38 @@
             width: 42px;
             height: 42px;
             border-radius: 12px;
-            background: linear-gradient(135deg, #2f5dff, #7b9cff);
+            background: linear-gradient(135deg, var(--blue), #7ea1ff);
             display: grid;
             place-items: center;
-            font-weight: 800;
             color: white;
+            font-weight: 800;
         }
 
         nav {
             display: flex;
             align-items: center;
-            gap: 25px;
+            gap: 26px;
         }
 
         nav a {
             color: rgba(255,255,255,0.82);
-            font-size: 0.96rem;
-            transition: color 0.2s ease;
+            font-size: 0.95rem;
         }
 
-        nav a:hover { color: white; }
+        nav a:hover { color: var(--white); }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 46px;
+            padding: 0 22px;
+            border-radius: 999px;
+            background: var(--gold);
+            color: var(--navy);
+            font-weight: 700;
+            box-shadow: 0 10px 20px rgba(215,184,116,0.28);
+        }
 
         .menu-toggle {
             display: none;
@@ -101,376 +114,223 @@
 
         .mobile-nav {
             display: none;
-            background: rgba(15,23,42,0.98);
+            background: rgba(13, 32, 57, 0.98);
             border-top: 1px solid rgba(255,255,255,0.08);
         }
 
         .mobile-nav a {
             display: block;
-            color: rgba(255,255,255,0.85);
+            color: rgba(255,255,255,0.86);
             padding: 14px 20px;
             border-bottom: 1px solid rgba(255,255,255,0.06);
         }
 
         .mobile-nav.active { display: block; }
 
-        .cta-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--gold);
-            color: var(--navy);
-            border-radius: 999px;
-            padding: 12px 22px;
-            font-weight: 700;
-            box-shadow: 0 10px 22px rgba(215,184,116,0.25);
-        }
-
-        .hero-wrap {
+        .hero {
+            background: linear-gradient(135deg, rgba(13, 32, 57, 0.88), rgba(22, 60, 98, 0.9)),
+                radial-gradient(circle at top left, rgba(215,184,116,0.18), transparent 30%);
+            color: var(--white);
+            padding: 36px 0 70px;
             position: relative;
             overflow: hidden;
-            background:
-                linear-gradient(rgba(10, 18, 29, 0.3), rgba(10, 18, 29, 0.3)),
-                linear-gradient(135deg, rgba(18,72,110,0.9), rgba(12,32,59,0.9));
-            min-height: 900px;
-            display: flex;
-            align-items: center;
-            padding: 42px 0 62px;
         }
 
-        .hero-panel {
-            max-width: 1200px;
-            margin: 0 auto;
-            width: calc(100% - 40px);
-            border: 2px solid rgba(255,255,255,0.35);
-            background: rgba(10, 22, 38, 0.72);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.22);
-            padding: 28px 28px 10px;
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 680px;
+            height: 680px;
+            left: -220px;
+            bottom: -180px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 760px;
+            height: 760px;
+            right: -260px;
+            top: -180px;
+            background: rgba(215,184,116,0.06);
+            border-radius: 50%;
+        }
+
+        .hero-inner {
             position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 28px;
+            align-items: center;
         }
 
-        .hero-title {
-            font-size: clamp(3rem, 5vw, 8.6rem);
-            line-height: 0.92;
+        .eyebrow {
+            display: inline-block;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.14);
+            color: var(--gold-2);
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-size: 0.74rem;
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(3rem, 4vw, 6rem);
+            line-height: 0.94;
             letter-spacing: -0.06em;
             font-weight: 900;
             text-transform: uppercase;
-            text-align: center;
-            color: #f8f7f3;
-            margin: 0;
-            text-shadow: 0 3px 0 rgba(0,0,0,0.15);
+            max-width: 700px;
         }
 
-        .hero-title .gold {
+        h1 .gold {
             display: block;
             color: var(--gold);
         }
 
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1.15fr 0.85fr;
-            gap: 30px;
-            align-items: center;
-            padding-top: 30px;
+        .hero-copy {
+            max-width: 660px;
+            color: rgba(255,255,255,0.8);
+            font-size: 1.08rem;
+            margin-top: 18px;
         }
 
-        .portrait-stage {
-            position: relative;
-            min-height: 660px;
+        .hero-actions {
             display: flex;
-            align-items: end;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 26px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
             justify-content: center;
-        }
-
-        .portrait {
-            width: min(100%, 660px);
-            aspect-ratio: 0.9;
-            position: relative;
-            border-radius: 26px 26px 0 0;
-            background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
-            overflow: hidden;
-        }
-
-        .cap {
-            position: absolute;
-            left: 50%;
-            top: 18%;
-            transform: translateX(-50%);
-            width: 60%;
-            height: 20%;
-            background: linear-gradient(180deg, #1d3867, #0d2345 70%);
-            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-            box-shadow: 0 20px 30px rgba(8,18,31,0.25);
-            z-index: 2;
-        }
-
-        .cap::before {
-            content: "";
-            position: absolute;
-            inset: 28% 14% 12% 14%;
-            background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0));
-            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-        }
-
-        .cap-tassel {
-            position: absolute;
-            width: 8px;
-            height: 90px;
-            background: #c9a76a;
-            left: 50%;
-            top: 36%;
-            transform: translateX(-50%);
-            border-radius: 6px;
-        }
-
-        .cap-tassel::before {
-            content: "";
-            position: absolute;
-            left: -5px;
-            top: 80px;
-            width: 18px;
-            height: 18px;
-            background: #d7b874;
-            border-radius: 50%;
-            box-shadow: 0 0 0 4px rgba(255,255,255,0.08);
-        }
-
-        .face {
-            position: absolute;
-            left: 50%;
-            top: 30%;
-            transform: translateX(-50%);
-            width: 40%;
-            height: 35%;
-            border-radius: 50% 50% 42% 42%;
-            background: linear-gradient(180deg, #f3d2b5 0%, #d9a37c 100%);
-            box-shadow: inset 0 -18px 20px rgba(141,83,52,0.15);
-            z-index: 3;
-        }
-
-        .hair {
-            position: absolute;
-            left: 50%;
-            top: 23%;
-            transform: translateX(-50%);
-            width: 48%;
-            height: 36%;
-            background: linear-gradient(180deg, #432d1c 0%, #251711 100%);
-            border-radius: 46% 46% 35% 35%;
-            z-index: 4;
-        }
-
-        .body {
-            position: absolute;
-            left: 50%;
-            bottom: 0;
-            transform: translateX(-50%);
-            width: 74%;
-            height: 52%;
-            background: linear-gradient(180deg, rgba(13,30,59,1), rgba(11,24,46,1));
-            border-radius: 24% 24% 0 0 / 12% 12% 0 0;
-            z-index: 1;
-            box-shadow: inset 0 0 30px rgba(255,255,255,0.08);
-        }
-
-        .graduation-diploma {
-            position: absolute;
-            left: 50%;
-            bottom: 6%;
-            transform: translateX(-50%);
-            width: min(80%, 470px);
-            background: linear-gradient(180deg, #f9f5ee, #f0e7d8);
-            border: 2px solid rgba(34, 34, 34, 0.25);
-            border-radius: 8px;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-            padding: 14px 18px 20px;
-            z-index: 6;
-        }
-
-        .diploma-ribbon {
-            position: absolute;
-            inset: 0 auto auto 50%;
-            transform: translateX(-50%);
-            height: 14px;
-            width: 86%;
-            background: linear-gradient(90deg, #c4a262, #eed8a0, #c4a262);
-            border-radius: 0 0 14px 14px;
-            box-shadow: 0 3px 0 rgba(0,0,0,0.08);
-        }
-
-        .diploma-ribbon::before,
-        .diploma-ribbon::after {
-            content: "";
-            position: absolute;
-            top: 100%;
-            width: 14px;
-            height: 14px;
-            background: #d7b874;
-            border-radius: 50%;
-        }
-
-        .diploma-ribbon::before { left: 18%; }
-        .diploma-ribbon::after { right: 18%; }
-
-        .diploma-title {
-            font-family: Georgia, serif;
-            text-align: center;
-            color: #1a2f4e;
-            font-size: clamp(1.5rem, 2vw, 2.2rem);
-            font-style: italic;
-            margin-top: 22px;
-            margin-bottom: 12px;
-        }
-
-        .diploma-sub {
-            text-align: center;
-            color: #3a3a3a;
-            font-style: italic;
-            margin-bottom: 10px;
-        }
-
-        .diploma-main {
-            text-align: center;
+            min-height: 52px;
+            padding: 0 24px;
+            border-radius: 999px;
             font-weight: 700;
-            font-size: clamp(1.4rem, 2vw, 2.1rem);
-            color: #1d3250;
-            margin: 18px 0 12px;
+            transition: transform 0.2s ease;
         }
 
-        .diploma-sign {
+        .btn:hover { transform: translateY(-1px); }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid rgba(255,255,255,0.2);
+            color: white;
+        }
+
+        .stats-panel {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: var(--radius);
+            padding: 28px;
+            max-width: 480px;
+            margin-left: auto;
+            box-shadow: var(--shadow);
+        }
+
+        .mini-head {
             display: flex;
             justify-content: space-between;
-            align-items: end;
-            margin-top: 20px;
-            gap: 10px;
-            text-align: center;
-        }
-
-        .diploma-sign .line {
-            width: 120px;
-            border-bottom: 2px solid #1e2c48;
-            margin-bottom: 10px;
-        }
-
-        .diploma-sign .label {
-            font-size: 0.8rem;
-            color: #555;
-        }
-
-        .hero-note {
-            display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            gap: 18px;
-            text-align: center;
-            padding: 20px 0 0;
-        }
-
-        .hero-note .small {
-            font-size: clamp(1.2rem, 2vw, 1.8rem);
-            color: var(--gold-soft);
+            margin-bottom: 24px;
+            color: rgba(255,255,255,0.78);
             font-weight: 700;
-            line-height: 1.2;
         }
 
-        .hero-note .sub {
-            font-size: clamp(1.1rem, 2vw, 1.7rem);
-            color: rgba(255,255,255,0.88);
-            max-width: 420px;
-            font-weight: 600;
-        }
-
-        .seal {
-            width: 160px;
-            height: 160px;
+        .mini-dot {
+            width: 10px;
+            height: 10px;
+            background: #9ff6b3;
             border-radius: 50%;
-            border: 3px solid rgba(215,184,116,0.8);
-            display: grid;
-            place-items: center;
-            box-shadow: inset 0 0 0 8px rgba(255,255,255,0.04);
-            background: rgba(255,255,255,0.05);
-            position: relative;
-            margin-top: 8px;
+            display: inline-block;
+            margin-right: 8px;
         }
 
-        .seal::before {
-            content: "GEORGE NEXUS GLOBAL";
-            position: absolute;
-            inset: 12% 10% 12% 10%;
-            border: 2px solid rgba(215,184,116,0.8);
-            border-radius: 50%;
+        .stats-grid {
             display: grid;
-            place-items: center;
-            font-size: 0.72rem;
-            letter-spacing: 0.12em;
-            font-weight: 700;
-            color: var(--gold-soft);
-            text-align: center;
-            padding: 12px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
         }
 
-        .seal-inner {
-            width: 54px;
-            height: 54px;
-            border-radius: 50%;
-            border: 2px solid rgba(215,184,116,0.8);
-            display: grid;
-            place-items: center;
-            font-size: 2rem;
-            color: var(--gold-soft);
-            position: relative;
-            z-index: 1;
+        .stat-box {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 18px 16px;
         }
 
-        section {
-            padding: 84px 0;
+        .stat-box strong {
+            display: block;
+            font-size: clamp(1.8rem, 2vw, 2.4rem);
+            color: white;
+            line-height: 1.1;
+        }
+
+        .stat-box span {
+            display: block;
+            color: rgba(255,255,255,0.72);
+            margin-top: 4px;
+            font-size: 0.88rem;
+        }
+
+        .section {
+            padding: 86px 0;
         }
 
         .section-tag {
             display: block;
             text-align: center;
-            color: #2f5dff;
-            font-weight: 700;
-            font-size: 0.85rem;
+            color: var(--blue);
+            font-size: 0.8rem;
             letter-spacing: 0.12em;
+            font-weight: 700;
             text-transform: uppercase;
-            margin-bottom: 14px;
+            margin-bottom: 12px;
         }
 
         .section-title {
-            margin: 0 auto 42px;
-            max-width: 720px;
             text-align: center;
-            font-size: clamp(2.1rem, 4vw, 3rem);
-            line-height: 1.1;
             color: var(--navy);
+            max-width: 760px;
+            margin: 0 auto 42px;
+            font-size: clamp(2.2rem, 4vw, 3.3rem);
+            line-height: 1.1;
         }
 
-        .highlights {
+        .feature-grid,
+        .program-grid,
+        .campus-grid,
+        .path-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 24px;
-            margin-top: 30px;
         }
+
+        .feature-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+        .program-grid { grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); }
+        .campus-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+        .path-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
 
         .card {
-            background: white;
-            border-radius: 18px;
-            box-shadow: 0 14px 32px rgba(15,23,42,0.08);
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
             padding: 28px 24px;
-        }
-
-        .card h3 {
-            margin: 0 0 12px;
-            color: var(--navy);
-            font-size: 1.3rem;
-        }
-
-        .card p, .feature p, .program-card p {
-            margin: 0;
-            color: var(--muted);
-            line-height: 1.7;
         }
 
         .feature-icon {
@@ -479,295 +339,365 @@
             border-radius: 16px;
             display: grid;
             place-items: center;
+            background: rgba(45,91,255,0.08);
             font-size: 1.8rem;
-            background: rgba(47,93,255,0.08);
             margin-bottom: 18px;
         }
 
-        .features-grid,
-        .program-grid {
-            display: grid;
-            gap: 26px;
-        }
-
-        .features-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
-        .program-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-
-        .feature, .program-card {
-            background: white;
-            border-radius: 18px;
-            padding: 28px 24px;
-            box-shadow: 0 16px 30px rgba(15,23,42,0.08);
-        }
-
-        .feature { border-left: 4px solid var(--blue); }
-        .program-card { border-top: 4px solid var(--gold); }
-
-        .program-card h3 {
-            margin: 12px 0 10px;
+        .card h3 {
             color: var(--navy);
-            font-size: 1.4rem;
+            margin: 0 0 10px;
+            font-size: 1.35rem;
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .program-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border-top: 5px solid var(--gold);
+            padding: 28px 24px;
         }
 
         .program-badge {
             display: inline-block;
             background: rgba(215,184,116,0.12);
-            color: #8d6d1e;
+            color: #7e6824;
             padding: 6px 10px;
             border-radius: 999px;
-            font-weight: 700;
-            font-size: 0.76rem;
-            text-transform: uppercase;
+            font-size: 0.72rem;
             letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 700;
         }
 
-        .program-card ul {
-            margin: 18px 0 0;
-            padding-left: 18px;
-            color: var(--muted);
-            line-height: 1.7;
-        }
-
-        .diploma-cta {
-            background: linear-gradient(135deg, var(--navy) 0%, #1d356d 100%);
-            color: white;
-            text-align: center;
-        }
-
-        .diploma-cta .inner {
-            max-width: 880px;
-            margin: 0 auto;
-        }
-
-        .diploma-cta h2 {
-            margin: 0 0 15px;
-            font-size: clamp(2rem, 4vw, 3rem);
-            color: white;
-        }
-
-        .diploma-cta p {
-            font-size: 1.08rem;
-            color: rgba(255,255,255,0.8);
-            margin: 0 0 25px;
-        }
-
-        .online-grid {
-            display: grid;
-            grid-template-columns: 1.05fr 0.95fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .online-copy h3 {
-            margin: 0 0 15px;
-            font-size: clamp(2rem, 3vw, 2.5rem);
+        .program-card h3 {
+            margin: 14px 0 10px;
+            font-size: 1.5rem;
             color: var(--navy);
         }
 
-        .online-copy p {
-            margin: 0 0 15px;
+        .program-card p {
             color: var(--muted);
-            line-height: 1.8;
+            line-height: 1.7;
+            margin: 0 0 16px;
         }
 
-        .check-list {
+        .program-card ul {
             list-style: none;
             padding: 0;
-            margin: 20px 0 0;
-        }
-
-        .check-list li {
-            position: relative;
-            padding-left: 28px;
-            margin-bottom: 12px;
+            margin: 0;
+            display: grid;
+            gap: 10px;
             color: var(--navy);
             font-weight: 600;
         }
 
-        .check-list li::before {
+        .program-card li::before {
             content: "✓";
-            position: absolute;
-            left: 0;
-            top: 0;
             color: var(--blue);
+            margin-right: 8px;
             font-weight: 900;
         }
 
-        .online-visual {
-            background: linear-gradient(135deg, #e8efff 0%, #cfe0ff 100%);
+        .study-banner {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%);
+            color: var(--white);
+            padding: 72px 0;
+        }
+
+        .study-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 36px;
+            align-items: center;
+        }
+
+        .study-inner h2 {
+            margin: 0 0 16px;
+            color: white;
+            font-size: clamp(2.2rem, 4vw, 3rem);
+            line-height: 1.1;
+        }
+
+        .study-inner p {
+            margin: 0;
+            color: rgba(255,255,255,0.8);
+            font-size: 1.08rem;
+            line-height: 1.8;
+        }
+
+        .study-checks {
+            display: grid;
+            gap: 14px;
+        }
+
+        .study-checks li {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 14px;
+            padding: 16px 18px;
+            color: rgba(255,255,255,0.9);
+            font-weight: 600;
+        }
+
+        .study-checks li::before {
+            content: "→";
+            color: var(--gold);
+            margin-right: 10px;
+            font-weight: 900;
+        }
+
+        .course-hero {
+            background: linear-gradient(180deg, #f6f8ff 0%, #edf4ff 100%);
+        }
+
+        .course-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .course-visual {
+            background: linear-gradient(135deg, #edf4ff 0%, #dfeaff 100%);
+            border: 1px solid rgba(13,32,57,0.08);
             border-radius: 24px;
+            padding: 26px;
+            box-shadow: var(--shadow);
             min-height: 420px;
             position: relative;
             overflow: hidden;
-            box-shadow: var(--shadow);
         }
 
-        .device {
-            position: absolute;
-            inset: 24px 30px 24px 30px;
-            background: linear-gradient(180deg, #0b203d 0%, #173767 100%);
-            border-radius: 24px;
-            box-shadow: 0 18px 38px rgba(10,20,40,0.25);
-            border: 2px solid rgba(255,255,255,0.2);
-            overflow: hidden;
-        }
-
-        .device::before {
+        .course-visual::before {
             content: "";
             position: absolute;
-            left: 14px;
-            right: 14px;
-            top: 16px;
-            height: 30px;
-            background: rgba(255,255,255,0.08);
-            border-radius: 999px;
+            inset: 20px 40px auto 40px;
+            height: 120px;
+            background: rgba(45,91,255,0.08);
+            border-radius: 18px;
         }
 
-        .device-panel {
+        .mini-sheet {
             position: absolute;
             left: 50%;
-            top: 56%;
+            top: 54%;
             transform: translate(-50%, -50%);
-            width: 70%;
-            height: 54%;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.2);
+            width: 80%;
+            background: white;
             border-radius: 18px;
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 18px;
-            padding: 18px;
+            box-shadow: 0 12px 30px rgba(14,25,40,0.12);
+            padding: 18px 22px;
+            border: 1px solid rgba(13,32,57,0.06);
         }
 
-        .mini-box {
-            background: rgba(255,255,255,0.08);
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.14);
+        .mini-sheet .line {
+            height: 12px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, rgba(45,91,255,0.15), rgba(45,91,255,0.06));
+            margin: 10px 0;
+        }
+
+        .mini-sheet .line.long { width: 80%; }
+        .mini-sheet .line.mid { width: 60%; }
+        .mini-sheet .line.short { width: 45%; }
+
+        .course-copy h3 {
+            margin: 0 0 16px;
+            color: var(--navy);
+            font-size: clamp(2rem, 3vw, 2.8rem);
+            line-height: 1.15;
+        }
+
+        .course-copy p {
+            margin: 0 0 18px;
+            color: var(--muted);
+            font-size: 1.02rem;
+            line-height: 1.8;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        .tag-list span {
+            background: rgba(45,91,255,0.07);
+            color: var(--navy);
+            border-radius: 999px;
+            padding: 8px 12px;
+            font-weight: 700;
+            font-size: 0.76rem;
+        }
+
+        .path-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 26px 22px;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--blue);
+        }
+
+        .path-card strong {
+            display: block;
+            color: var(--navy);
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
+        .path-card p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .cta-banner {
+            background: linear-gradient(135deg, var(--navy) 0%, #1a3c6e 100%);
+            color: white;
+            padding: 72px 0;
+            text-align: center;
+        }
+
+        .cta-banner h2 {
+            margin: 0 0 16px;
+            color: white;
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+        }
+
+        .cta-banner p {
+            margin: 0 0 26px;
+            color: rgba(255,255,255,0.8);
+            font-size: 1.08rem;
         }
 
         footer {
             background: #0d1530;
-            color: rgba(255,255,255,0.75);
-            padding: 50px 0 26px;
+            color: rgba(255,255,255,0.76);
+            padding: 42px 0 30px;
             text-align: center;
         }
 
         @media (max-width: 900px) {
             nav { display: none; }
             .menu-toggle { display: block; }
-            .hero-content,
-            .online-grid {
-                grid-template-columns: 1fr;
-            }
-            .hero-wrap { min-height: auto; }
-            .hero-panel { padding: 22px 14px 10px; }
-            .hero-note { padding-bottom: 12px; }
+            .hero-inner,
+            .course-box,
+            .study-inner { grid-template-columns: 1fr; }
+            .stats-panel { margin-left: 0; }
+            .hero { padding-top: 20px; }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="header-inner">
+        <div class="container header-inner">
             <div class="brand">
                 <div class="brand-mark">G</div>
                 <span>Goergenexus</span>
             </div>
+
             <button class="menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
-            <nav>
-                <a href="#programs">Programs</a>
-                <a href="#diploma">US Diploma</a>
-                <a href="#online">Online Learning</a>
-                <a href="#contact">Contact</a>
+
+            <nav aria-label="Main navigation">
+                <a href="#about">About</a>
+                <a href="#curriculum">Curriculum</a>
+                <a href="#study">Study</a>
+                <a href="#pathways">Pathways</a>
                 <a href="#contact" class="cta-btn">Enroll</a>
             </nav>
         </div>
-        <nav class="mobile-nav" id="mobileNav">
-            <a href="#programs">Programs</a>
-            <a href="#diploma">US Diploma</a>
-            <a href="#online">Online Learning</a>
-            <a href="#contact">Contact</a>
+
+        <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+            <a href="#about">About</a>
+            <a href="#curriculum">Curriculum</a>
+            <a href="#study">Study</a>
+            <a href="#pathways">Pathways</a>
             <a href="#contact" class="cta-btn">Enroll</a>
         </nav>
     </header>
 
-    <section class="hero-wrap">
-        <div class="hero-panel">
-            <h1 class="hero-title">
-                GLOBALLY CONNECTED:
-                <span class="gold">MY ACADEMIC JOURNEY</span>
-            </h1>
-
-            <div class="hero-content">
-                <div class="portrait-stage">
-                    <div class="portrait" aria-label="Graduation portrait illustration">
-                        <div class="hair"></div>
-                        <div class="cap"></div>
-                        <div class="cap-tassel"></div>
-                        <div class="face"></div>
-                        <div class="body"></div>
-                        <div class="graduation-diploma">
-                            <div class="diploma-ribbon"></div>
-                            <div class="diploma-title">George Nexus Global School LLC</div>
-                            <div class="diploma-sub">This certificate is awarded to</div>
-                            <div class="diploma-main">HIGH SCHOOL DIPLOMA</div>
-                            <div class="diploma-sign">
-                                <div>
-                                    <div class="line"></div>
-                                    <div class="label">Student</div>
-                                </div>
-                                <div>
-                                    <div class="line"></div>
-                                    <div class="label">Authorized Signatory</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <section class="hero" id="about">
+        <div class="container hero-inner">
+            <div>
+                <div class="eyebrow">Global online education</div>
+                <h1>Globally connected:<span class="gold">my academic journey</span></h1>
+                <div class="hero-copy">
+                    Goergenexus School helps students in Grades 9–12 complete a high-quality US-aligned online education from home, while building strong foundations for university access around the world.
                 </div>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn btn-primary">Start learning</a>
+                    <a href="#curriculum" class="btn btn-secondary">Explore programs</a>
+                </div>
+            </div>
 
-                <div class="hero-note">
-                    <div class="small">By the Graduate Class of 2026<br>George Nexus Global School LLC</div>
-                    <div class="seal">
-                        <div class="seal-inner">✦</div>
+            <div class="stats-panel">
+                <div class="mini-head">
+                    <span><span class="mini-dot"></span>School overview</span>
+                    <span>2026</span>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <strong>9–12</strong>
+                        <span>Grade levels</span>
                     </div>
-                    <div class="sub">Online US High School Diploma • Grades 9–12 • Accepted in universities worldwide</div>
+                    <div class="stat-box">
+                        <strong>100%</strong>
+                        <span>Online study</span>
+                    </div>
+                    <div class="stat-box">
+                        <strong>US</strong>
+                        <span>Diploma focus</span>
+                    </div>
+                    <div class="stat-box">
+                        <strong>Global</strong>
+                        <span>University pathway</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section>
+    <section class="section">
         <div class="container">
-            <span class="section-tag">Why students choose us</span>
-            <h2 class="section-title">Flexible, recognized, and built for global university access</h2>
-            <div class="highlights">
+            <span class="section-tag">Why choose us</span>
+            <h2 class="section-title">A strong academic foundation for students who want global opportunities</h2>
+            <div class="feature-grid">
                 <div class="card">
                     <div class="feature-icon">🎓</div>
-                    <h3>US High School Diploma</h3>
-                    <p>Earn a recognized US diploma from grades 9–12 through a rigorous online pathway designed for university readiness.</p>
+                    <h3>US high school pathway</h3>
+                    <p>Students follow a structured curriculum aligned to rigorous high school standards, preparing them for university study and future academic success.</p>
                 </div>
                 <div class="card">
                     <div class="feature-icon">🏠</div>
                     <h3>Study from home</h3>
-                    <p>Complete your education online, without travel or schedule interruptions. Learn from anywhere in the world.</p>
+                    <p>Online instruction gives students flexibility to learn in a safe, comfortable environment while maintaining a high level of academic accountability.</p>
                 </div>
                 <div class="card">
                     <div class="feature-icon">🌍</div>
-                    <h3>Global access</h3>
-                    <p>Our diploma supports university entry across Europe, the USA, and international institutions that value global-ready students.</p>
+                    <h3>Global university readiness</h3>
+                    <p>Curriculum and academic guidance are designed to help students build the skills needed in international university applications and admissions processes.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="programs">
+    <section class="section" id="curriculum">
         <div class="container">
             <span class="section-tag">Programs</span>
-            <h2 class="section-title">Grades 9–12 learning designed for future success</h2>
+            <h2 class="section-title">Academic programs and learning tracks for Grades 9–12</h2>
             <div class="program-grid">
                 <article class="program-card">
                     <span class="program-badge">Grade 9</span>
                     <h3>Foundations</h3>
-                    <p>Build your academic base through English, mathematics, sciences, and humanities with a supportive digital environment.</p>
+                    <p>Build confidence in core academic subjects and strengthen learning habits, literacy, and quantitative skills.</p>
                     <ul>
                         <li>English and writing</li>
                         <li>Algebra and geometry</li>
@@ -777,100 +707,123 @@
 
                 <article class="program-card">
                     <span class="program-badge">Grade 10</span>
-                    <h3>Intermediate Path</h3>
-                    <p>Strengthen core skills and begin exploring electives that prepare students for advanced study and university pathway planning.</p>
+                    <h3>Core growth</h3>
+                    <p>Students deepen knowledge in STEM, humanities, and communication while preparing for advanced studies.</p>
                     <ul>
                         <li>Advanced science</li>
-                        <li>World history and literature</li>
-                        <li>STEM and creative electives</li>
+                        <li>World history</li>
+                        <li>Research and presentation skills</li>
                     </ul>
                 </article>
 
                 <article class="program-card">
                     <span class="program-badge">Grade 11</span>
-                    <h3>College Preparation</h3>
-                    <p>Students take more rigorous courses, strengthen university readiness, and prepare for stronger global applications.</p>
+                    <h3>College prep</h3>
+                    <p>Rigorous coursework and university preparation support help students strengthen academic performance and readiness.</p>
                     <ul>
-                        <li>Pre-calculus and analytical writing</li>
-                        <li>Physics and research-based learning</li>
-                        <li>University prep guidance</li>
+                        <li>Pre-calculus</li>
+                        <li>Physics and chemistry</li>
+                        <li>Academic advising</li>
                     </ul>
                 </article>
 
                 <article class="program-card">
                     <span class="program-badge">Grade 12</span>
-                    <h3>Senior Graduation</h3>
-                    <p>Finish with advanced coursework and mentorship, focusing on capstone learning, applications, and academic confidence.</p>
+                    <h3>Graduation</h3>
+                    <p>Final-year support focuses on academic mastery, university pathway planning, and graduation completion.</p>
                     <ul>
-                        <li>Senior-level English and math</li>
-                        <li>Advanced electives</li>
-                        <li>College application support</li>
+                        <li>Senior academic subjects</li>
+                        <li>Application readiness</li>
+                        <li>Capstone and career planning</li>
                     </ul>
                 </article>
             </div>
         </div>
     </section>
 
-    <section id="diploma" class="diploma-cta">
-        <div class="container inner">
-            <span class="section-tag" style="color: var(--gold-soft);">International recognition</span>
-            <h2>US High School Diploma for universities worldwide</h2>
-            <p>Students who complete grades 9–12 with Goergenexus gain a diploma that supports admission to universities in the United States, Europe, and many other global destinations.</p>
-            <a href="#contact" class="cta-btn" style="background: var(--gold);">Apply Now</a>
+    <section class="study-banner" id="study">
+        <div class="container study-inner">
+            <div>
+                <span class="section-tag" style="text-align:left; color: var(--gold-2);">Learning model</span>
+                <h2>Online learning designed for discipline, flexibility, and progress</h2>
+                <p>Goergenexus School combines structured teaching with flexible access to digital learning tools, helping students stay engaged while learning from home. Students benefit from a blended teaching approach, teacher feedback, and accessible course materials.</p>
+            </div>
+            <ul class="study-checks">
+                <li>Live online instruction and teacher support</li>
+                <li>Recorded lessons and self-paced review</li>
+                <li>Assignments, assessments, and progress tracking</li>
+                <li>Digital learning resources and guided study plans</li>
+                <li>University application and academic counseling</li>
+            </ul>
         </div>
     </section>
 
-    <section id="online">
-        <div class="container online-grid">
-            <div class="online-copy">
-                <span class="section-tag">Online learning</span>
-                <h3>100% online education from home</h3>
-                <p>Goergenexus School gives students the freedom to learn from anywhere while keeping academic standards high. This structure is ideal for learners seeking a flexible, international, and future-ready educational experience.</p>
-                <ul class="check-list">
-                    <li>Live online learning with expert teachers</li>
-                    <li>Flexible weekly schedule and self-paced study</li>
-                    <li>Global student community and digital support</li>
-                    <li>Preparation for university applications worldwide</li>
-                </ul>
+    <section class="section course-hero">
+        <div class="container course-box">
+            <div class="course-visual" aria-label="Course materials illustration">
+                <div class="mini-sheet">
+                    <div class="line long"></div>
+                    <div class="line mid"></div>
+                    <div class="line short"></div>
+                    <div class="line long"></div>
+                    <div class="line mid"></div>
+                </div>
             </div>
-            <div class="online-visual" aria-label="Online learning illustration">
-                <div class="device">
-                    <div class="device-panel">
-                        <div class="mini-box"></div>
-                        <div class="mini-box"></div>
-                        <div class="mini-box"></div>
-                        <div class="mini-box"></div>
-                    </div>
+            <div class="course-copy">
+                <span class="section-tag" style="text-align:left;">Curriculum focus</span>
+                <h3>Subjects that prepare students for real-world academic growth</h3>
+                <p>Our program integrates core academic disciplines with practical thinking, communication, research, and digital literacy. Students are encouraged to become independent learners while building strong academic habits.</p>
+                <div class="tag-list">
+                    <span>English</span>
+                    <span>Mathematics</span>
+                    <span>Science</span>
+                    <span>History</span>
+                    <span>Business</span>
+                    <span>Technology</span>
+                    <span>Arts</span>
+                    <span>Research</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact">
+    <section class="section" id="pathways">
         <div class="container">
-            <span class="section-tag">Admission</span>
-            <h2 class="section-title">Begin your online US diploma journey today</h2>
-            <div class="highlights">
-                <div class="card">
-                    <h3>Enrollment</h3>
-                    <p>Apply for grades 9–12 and receive guidance from our team about course selection and academic planning.</p>
+            <span class="section-tag">University pathways</span>
+            <h2 class="section-title">Learning outcomes that support future university entry</h2>
+            <div class="path-grid">
+                <div class="path-card">
+                    <strong>Academic readiness</strong>
+                    <p>Students strengthen analytical thinking, writing, problem-solving, and subject knowledge needed for a successful university transition.</p>
                 </div>
-                <div class="card">
-                    <h3>Academic Support</h3>
-                    <p>Students receive structured guidance, virtual support, and learning help during each stage of their education.</p>
+                <div class="path-card">
+                    <strong>Global perspective</strong>
+                    <p>Our learning model values international awareness, communication skills, and flexible thinking relevant to modern university systems.</p>
                 </div>
-                <div class="card">
-                    <h3>University Path</h3>
-                    <p>Our academic framework is aligned to preparation for global university access and future success.</p>
+                <div class="path-card">
+                    <strong>Career preparation</strong>
+                    <p>Students explore future opportunities through structured guidance, self-development, and academic planning aligned with long-term goals.</p>
+                </div>
+                <div class="path-card">
+                    <strong>Digital literacy</strong>
+                    <p>Students learn how to use online tools, collaborate effectively, and perform academic work in technology-supported environments.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <section class="cta-banner" id="contact">
+        <div class="container">
+            <h2>Begin your educational journey with Goergenexus</h2>
+            <p>Grades 9–12 online learning with a strong focus on academic achievement, personal development, and future university access.</p>
+            <a href="mailto:info@goergenexus.edu" class="cta-btn">Apply now</a>
         </div>
     </section>
 
     <footer>
         <div class="container">
             <p><strong>Goergenexus School</strong></p>
-            <p>US High School Diploma • Grades 9–12 • Online Learning • Global University Access</p>
+            <p>Online Grades 9–12 • US-aligned curriculum • Global university access</p>
             <p>&copy; 2026 Goergenexus School LLC</p>
         </div>
     </footer>
