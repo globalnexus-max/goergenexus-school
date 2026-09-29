@@ -6,7 +6,7 @@
     <title>Goergenexus School</title>
     <meta
       name="description"
-      content="Goergenexus School offers a modern K-12 learning experience with academic excellence, student support, and a strong community." 
+      content="Goergenexus School offers a modern K-12 learning experience with academic excellence, student support, and a strong community."
     />
     <style>
       :root {
@@ -20,14 +20,8 @@
         --shadow: 0 18px 40px rgba(31, 42, 55, 0.12);
       }
 
-      * {
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
       body {
         margin: 0;
         font-family: Arial, Helvetica, sans-serif;
@@ -35,16 +29,8 @@
         color: var(--text);
         line-height: 1.6;
       }
-
-      a {
-        text-decoration: none;
-      }
-
-      img {
-        max-width: 100%;
-        display: block;
-      }
-
+      a { text-decoration: none; }
+      img { max-width: 100%; display: block; }
       .container {
         width: min(1120px, calc(100% - 32px));
         margin: 0 auto;
@@ -58,14 +44,12 @@
         z-index: 999;
         backdrop-filter: blur(8px);
       }
-
       .topbar-inner {
         display: flex;
         align-items: center;
         justify-content: space-between;
         min-height: 72px;
       }
-
       .brand {
         display: inline-flex;
         align-items: center;
@@ -74,7 +58,6 @@
         font-weight: 700;
         color: var(--white);
       }
-
       .brand-mark {
         width: 42px;
         height: 42px;
@@ -90,14 +73,53 @@
         align-items: center;
         gap: 26px;
       }
-
       nav a {
-        color: rgba(255, 255, 255, 0.8);
+        color: rgba(255,255,255,0.8);
         font-size: 0.96rem;
         transition: color 0.2s ease;
       }
+      nav a:hover { color: var(--white); }
 
-      nav a:hover {
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 6px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+      }
+      .hamburger span {
+        width: 24px;
+        height: 2.5px;
+        background: var(--white);
+        border-radius: 2px;
+        transition: all 0.3s ease;
+      }
+      .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(8px, 8px); }
+      .hamburger.active span:nth-child(2) { opacity: 0; }
+      .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -7px); }
+
+      .mobile-menu {
+        display: none;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: rgba(27,35,64,0.98);
+        backdrop-filter: blur(8px);
+        flex-direction: column;
+        z-index: 998;
+      }
+      .mobile-menu.active { display: flex; }
+      .mobile-menu a {
+        display: block;
+        color: rgba(255,255,255,0.8);
+        padding: 16px 24px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+      }
+      .mobile-menu a:hover {
+        background: rgba(255,255,255,0.05);
         color: var(--white);
       }
 
@@ -108,25 +130,23 @@
         padding: 12px 22px;
         border-radius: 999px;
         font-weight: 700;
-        box-shadow: 0 12px 22px rgba(255, 183, 3, 0.3);
+        box-shadow: 0 12px 22px rgba(255,183,3,0.3);
       }
 
       .hero {
         padding: 72px 0 30px;
         background: linear-gradient(135deg, #edf3ff 0%, #eef6ff 100%);
       }
-
       .hero-grid {
         display: grid;
         grid-template-columns: 1.2fr 0.8fr;
         gap: 48px;
         align-items: center;
       }
-
       .eyebrow {
         display: inline-block;
-        background: rgba(47, 93, 255, 0.08);
-        border: 1px solid rgba(47, 93, 255, 0.14);
+        background: rgba(47,93,255,0.08);
+        border: 1px solid rgba(47,93,255,0.14);
         color: var(--primary);
         padding: 8px 14px;
         border-radius: 999px;
@@ -135,27 +155,23 @@
         text-transform: uppercase;
         font-weight: 700;
       }
-
       h1 {
         font-size: clamp(2.3rem, 4vw, 4.3rem);
         line-height: 1.1;
         margin: 20px 0 16px;
         color: var(--secondary);
       }
-
       .lead {
         font-size: 1.08rem;
         color: var(--muted);
         max-width: 620px;
       }
-
       .hero-actions {
         display: flex;
         flex-wrap: wrap;
         gap: 16px;
         margin-top: 26px;
       }
-
       .button-primary,
       .button-secondary {
         display: inline-flex;
@@ -167,24 +183,19 @@
         font-weight: 700;
         transition: transform 0.2s ease, box-shadow 0.2s ease;
       }
-
       .button-primary {
         background: var(--primary);
         color: var(--white);
-        box-shadow: 0 12px 25px rgba(47, 93, 255, 0.22);
+        box-shadow: 0 12px 25px rgba(47,93,255,0.22);
       }
-
       .button-secondary {
         background: transparent;
         color: var(--secondary);
-        border: 2px solid rgba(27, 35, 64, 0.15);
+        border: 2px solid rgba(27,35,64,0.15);
       }
-
       .button-primary:hover,
       .button-secondary:hover,
-      .cta:hover {
-        transform: translateY(-1px);
-      }
+      .cta:hover { transform: translateY(-1px); }
 
       .hero-card {
         background: var(--white);
@@ -192,7 +203,6 @@
         padding: 24px;
         box-shadow: var(--shadow);
       }
-
       .dashboard {
         background: linear-gradient(135deg, #1b2340 0%, #2f5dff 100%);
         border-radius: 20px;
@@ -200,7 +210,6 @@
         min-height: 340px;
         color: var(--white);
       }
-
       .mini-header {
         display: flex;
         justify-content: space-between;
@@ -208,7 +217,6 @@
         margin-bottom: 24px;
         font-weight: 700;
       }
-
       .dot {
         width: 10px;
         height: 10px;
@@ -217,48 +225,39 @@
         display: inline-block;
         margin-right: 8px;
       }
-
       .stats-grid {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 16px;
         margin-top: 18px;
       }
-
       .stat-box {
-        background: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.18);
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.18);
         border-radius: 16px;
         padding: 18px 16px;
       }
-
       .stat-num {
         display: block;
         font-size: 2rem;
         font-weight: 700;
       }
-
       .stat-label {
         color: rgba(255,255,255,0.8);
         font-size: 0.85rem;
       }
 
-      section {
-        padding: 88px 0;
-      }
-
+      section { padding: 88px 0; }
       .section-heading {
         text-align: center;
         max-width: 700px;
         margin: 0 auto 42px;
       }
-
       .section-heading h2 {
         margin: 0 0 14px;
         font-size: clamp(2rem, 3vw, 3rem);
         color: var(--secondary);
       }
-
       .section-heading p {
         margin: 0;
         color: var(--muted);
@@ -271,11 +270,7 @@
         display: grid;
         gap: 24px;
       }
-
-      .features-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-
+      .features-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .feature-card,
       .program-card,
       .contact-box {
@@ -284,7 +279,6 @@
         padding: 28px 24px;
         box-shadow: var(--shadow);
       }
-
       .feature-icon {
         width: 62px;
         height: 62px;
@@ -292,11 +286,10 @@
         display: grid;
         place-items: center;
         font-size: 1.5rem;
-        background: rgba(47, 93, 255, 0.08);
+        background: rgba(47,93,255,0.08);
         color: var(--primary);
         margin-bottom: 18px;
       }
-
       .feature-card h3,
       .program-card h3,
       .contact-box h3 {
@@ -304,7 +297,6 @@
         font-size: 1.3rem;
         color: var(--secondary);
       }
-
       .feature-card p,
       .program-card p,
       .contact-box p,
@@ -313,29 +305,20 @@
         color: var(--muted);
       }
 
-      .program-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-
-      .program-card {
-        border-top: 4px solid var(--primary);
-      }
-
+      .program-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .program-card { border-top: 4px solid var(--primary); }
       .program-card .badge {
         display: inline-block;
         margin-bottom: 12px;
         padding: 6px 10px;
-        background: rgba(47, 93, 255, 0.08);
+        background: rgba(47,93,255,0.08);
         color: var(--primary);
         border-radius: 999px;
         font-size: 0.75rem;
         font-weight: 700;
       }
 
-      .contact-grid {
-        grid-template-columns: 1.2fr 0.8fr;
-      }
-
+      .contact-grid { grid-template-columns: 1.2fr 0.8fr; }
       .contact-box ul {
         list-style: none;
         padding: 0;
@@ -343,13 +326,11 @@
         display: grid;
         gap: 10px;
       }
-
       .contact-box li {
         display: flex;
         gap: 10px;
         align-items: flex-start;
       }
-
       .contact-box li::before {
         content: "•";
         color: var(--primary);
@@ -362,19 +343,16 @@
         color: var(--white);
         padding: 72px 0;
       }
-
       .cta-wrap {
         display: flex;
         align-items: center;
         justify-content: space-between;
         gap: 30px;
       }
-
       .cta-wrap h2 {
         margin: 0 0 10px;
         font-size: clamp(2rem, 3vw, 2.7rem);
       }
-
       .cta-wrap p {
         margin: 0;
         color: rgba(255,255,255,0.8);
@@ -385,7 +363,6 @@
         color: rgba(255,255,255,0.8);
         padding: 34px 0;
       }
-
       .footer-inner {
         display: flex;
         align-items: center;
@@ -402,14 +379,9 @@
           grid-template-columns: 1fr;
           display: grid;
         }
-
-        nav {
-          display: none;
-        }
-
-        .cta-wrap {
-          display: grid;
-        }
+        nav { display: none; }
+        .hamburger { display: flex; }
+        section { padding: 50px 0; }
       }
     </style>
   </head>
@@ -418,8 +390,14 @@
       <div class="container topbar-inner">
         <a href="#top" class="brand" aria-label="Goergenexus School home">
           <span class="brand-mark">G</span>
-          <span>Goergenexus School</span>
+          <span>Goergenexus</span>
         </a>
+
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
 
         <nav aria-label="Main navigation">
           <a href="#about">About</a>
@@ -428,6 +406,14 @@
           <a href="#contact">Contact</a>
           <a href="#contact" class="cta">Apply Now</a>
         </nav>
+
+        <div id="mobileMenu" class="mobile-menu">
+          <a href="#about">About</a>
+          <a href="#programs">Programs</a>
+          <a href="#features">Features</a>
+          <a href="#contact">Contact</a>
+          <a href="#contact" class="cta">Apply Now</a>
+        </div>
       </div>
     </header>
 
@@ -563,11 +549,11 @@
           </div>
 
           <div class="contact-box">
-            <h3>Contact</h3>
+            <h3>Get in Touch</h3>
             <ul>
-              <li>Admissions and enrollment support</li>
-              <li>School tours and meeting requests</li>
-              <li>Questions about programs and schedules</li>
+              <li>📧 Email: info@goergenexus.edu</li>
+              <li>📞 Phone: (555) 123-4567</li>
+              <li>📍 Address: 123 School Way, City</li>
             </ul>
           </div>
         </div>
@@ -590,5 +576,30 @@
         <span>Building Bright Futures</span>
       </div>
     </footer>
+
+    <script>
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const mobileLinks = mobileMenu.querySelectorAll('a');
+
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+      });
+
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          hamburger.classList.remove('active');
+          mobileMenu.classList.remove('active');
+        });
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!e.target.closest('header')) {
+          hamburger.classList.remove('active');
+          mobileMenu.classList.remove('active');
+        }
+      });
+    </script>
   </body>
 </html>
