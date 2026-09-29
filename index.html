@@ -37,7 +37,6 @@
             padding: 0 20px;
         }
 
-        /* Header */
         header {
             background: rgba(15, 23, 42, 0.92);
             backdrop-filter: blur(12px);
@@ -127,19 +126,16 @@
             box-shadow: 0 10px 22px rgba(215,184,116,0.25);
         }
 
-        /* Hero */
         .hero-wrap {
             position: relative;
             overflow: hidden;
             background:
-                linear-gradient(rgba(10, 18, 29, 0.35), rgba(10, 18, 29, 0.35)),
-                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900"><defs><linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop stop-color="%2308335a"/><stop offset="1" stop-color="%232a4768"/></linearGradient></defs><rect width="1600" height="900" fill="url(%23g)"/><g opacity="0.35"><path d="M0 880C240 760 420 720 630 760C820 795 1040 810 1600 720V900H0Z" fill="%23d7b874"/></g><g opacity="0.18"><path d="M0 600C180 540 320 570 510 620C650 660 830 690 1000 640C1200 580 1380 530 1600 580V900H0Z" fill="%23ffffff"/></g></svg>');
-            background-size: cover;
-            background-position: center;
-            min-height: 920px;
+                linear-gradient(rgba(10, 18, 29, 0.3), rgba(10, 18, 29, 0.3)),
+                linear-gradient(135deg, rgba(18,72,110,0.9), rgba(12,32,59,0.9));
+            min-height: 900px;
             display: flex;
             align-items: center;
-            padding: 50px 0 70px;
+            padding: 42px 0 62px;
         }
 
         .hero-panel {
@@ -191,9 +187,8 @@
             aspect-ratio: 0.9;
             position: relative;
             border-radius: 26px 26px 0 0;
-            background:
-                radial-gradient(circle at 50% 18%, rgba(250, 220, 166, 0.28) 0%, rgba(250, 220, 166, 0.08) 20%, transparent 22%),
-                linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+            background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+            overflow: hidden;
         }
 
         .cap {
@@ -265,18 +260,6 @@
             z-index: 4;
         }
 
-        .hair::before {
-            content: "";
-            position: absolute;
-            left: 12%;
-            top: 12%;
-            width: 18%;
-            height: 70%;
-            background: rgba(0,0,0,0.1);
-            border-radius: 40% 40% 30% 30%;
-            transform: rotate(-2deg);
-        }
-
         .body {
             position: absolute;
             left: 50%;
@@ -288,30 +271,6 @@
             border-radius: 24% 24% 0 0 / 12% 12% 0 0;
             z-index: 1;
             box-shadow: inset 0 0 30px rgba(255,255,255,0.08);
-        }
-
-        .body::before {
-            content: "";
-            position: absolute;
-            left: 50%;
-            top: 10%;
-            transform: translateX(-50%);
-            width: 30%;
-            height: 14%;
-            background: rgba(255,255,255,0.06);
-            border-radius: 18px;
-        }
-
-        .body::after {
-            content: "";
-            position: absolute;
-            left: 50%;
-            top: 22%;
-            transform: translateX(-50%);
-            width: 58%;
-            height: 14%;
-            background: rgba(255,255,255,0.04);
-            border-radius: 14px;
         }
 
         .graduation-diploma {
@@ -451,15 +410,6 @@
             padding: 12px;
         }
 
-        .seal::after {
-            content: "✦";
-            position: absolute;
-            inset: auto 50% 18px auto;
-            transform: translateX(50%);
-            color: var(--gold-soft);
-            font-size: 2rem;
-        }
-
         .seal-inner {
             width: 54px;
             height: 54px;
@@ -473,7 +423,6 @@
             z-index: 1;
         }
 
-        /* Rest Sections */
         section {
             padding: 84px 0;
         }
