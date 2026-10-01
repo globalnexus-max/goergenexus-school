@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AI Teacher | Goergenexus School</title>
+  <style>
+    :root{--navy:#0c1d36;--blue:#355cff;--gold:#e3bf73;--bg:#f5f8ff;--ink:#172236;--muted:#667085;--line:#e5eaf3}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif}.top{background:var(--navy);color:#fff;padding:18px 20px}.top-inner{max-width:900px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{font-weight:800;font-size:20px}.back{color:#fff;text-decoration:none}.wrap{max-width:900px;margin:36px auto;padding:0 18px}.hero{text-align:center;margin-bottom:24px}.hero h1{margin:0 0 8px;font-size:clamp(2rem,5vw,3rem)}.hero p{color:var(--muted);margin:0}.chat{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 18px 50px #11264b18;overflow:hidden}.messages{height:430px;overflow:auto;padding:22px}.message{max-width:82%;padding:12px 15px;border-radius:16px;margin:10px 0;white-space:pre-wrap}.assistant{background:#edf2fc}.user{background:var(--navy);color:#fff;margin-left:auto}.empty{text-align:center;color:var(--muted);padding:100px 20px}.composer{border-top:1px solid var(--line);padding:16px;display:flex;gap:10px}.composer textarea{flex:1;resize:none;min-height:48px;border:1px solid var(--line);border-radius:12px;padding:12px;font:inherit}.send{border:0;border-radius:12px;background:var(--blue);color:#fff;padding:0 20px;font-weight:700;cursor:pointer}.info{display:flex;justify-content:space-between;gap:10px;padding:12px 16px;background:#fafbff;color:var(--muted);font-size:14px}.pricing{margin-top:18px;background:linear-gradient(135deg,#edf2fc 0%,#f5f8ff 100%);border:1px solid var(--line);border-radius:12px;padding:18px}.pricing h3{margin:0 0 10px;color:var(--ink)}.pricing-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.plan{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px;text-align:center}.plan h4{margin:0 0 4px;font-size:15px}.plan .price{font-size:20px;font-weight:800;color:var(--blue);margin:6px 0}.plan .desc{font-size:13px;color:var(--muted)}.upgrade-btn{display:block;margin-top:12px;width:100%;padding:8px;background:var(--blue);color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:600;text-decoration:none;text-align:center;font-size:13px}.upgrade-btn:hover{opacity:0.9}.warning{margin-top:18px;background:#fff8e7;border:1px solid #f0d895;border-radius:12px;padding:12px;color:#755a16;font-size:14px}@media(max-width:600px){.messages{height:55vh}.composer{flex-direction:column}.send{height:46px}.pricing-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header class="top"><div class="top-inner"><div class="brand">G Goergenexus</div><a class="back" href="index.html">← Home</a></div></header>
+  <main class="wrap">
+    <section class="hero"><h1>AI Teacher</h1><p>Personalized learning assistant in English</p></section>
+    <section class="chat" aria-label="AI teacher chat">
+      <div id="messages" class="messages"><div class="empty" id="empty">Ask a question: e.g., "Explain quadratic equations simply."</div></div>
+      <form class="composer" id="form"><textarea id="question" maxlength="2000" placeholder="Ask your question..." required></textarea><button class="send" type="submit">Send</button></form>
+      <div class="info"><span id="limit">3 free questions left today</span></div>
+    </section>
+    <section class="pricing">
+      <h3>📊 Pricing Plans</h3>
+      <div class="pricing-grid">
+        <div class="plan">
+          <h4>Free</h4>
+          <div class="price">$0</div>
+          <div class="desc">3 questions/day</div>
+        </div>
+        <div class="plan">
+          <h4>Premium</h4>
+          <div class="price">$6 USD</div>
+          <div class="desc">Unlimited/month</div>
+          <a href="premium-en.html" class="upgrade-btn">Upgrade →</a>
+        </div>
+      </div>
+    </section>
+    <div class="warning">Note: AI responses are for learning support. Check with teachers for important decisions.</div>
+  </main>
+  <script>
+    const form=document.getElementById('form'), question=document.getElementById('question'), messages=document.getElementById('messages'), empty=document.getElementById('empty'), limit=document.getElementById('limit');
+    const today=new Date().toISOString().slice(0,10), key='goergenexus-ai-usage'; let usage=JSON.parse(localStorage.getItem(key)||'{}'); if(usage.date!==today) usage={date:today,count:0};
+    
+    function checkPremium(){return JSON.parse(localStorage.getItem('goergenexus-premium')||'{}').status==='active'}
+    function update(){const remaining=Math.max(0,3-usage.count);limit.textContent=`${remaining} free questions left today`}
+    function add(text,who){empty?.remove();const el=document.createElement('div');el.className=`message ${who}`;el.textContent=text;messages.appendChild(el);messages.scrollTop=messages.scrollHeight}
+    
+    update(); 
+    form.addEventListener('submit',async e=>{
+      e.preventDefault();
+      const q=question.value.trim();
+      if(!q)return;
+      const isPremium=checkPremium();
+      if(usage.count>=3 && !isPremium){
+        add('Your daily free questions have ended. Get Premium ($6/month) for unlimited questions.','assistant');
+        return
+      }
+      add(q,'user');
+      question.value='';
+      usage.count++;
+      localStorage.setItem(key,JSON.stringify(usage));
+      update();
+      add('Processing your question…','assistant');
+      const loading=messages.lastElementChild;
+      try{
+        const r=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:q,lang:'en'})});
+        const data=await r.json();
+        loading.textContent=data.reply||data.error||'No response received.'
+      }catch(err){
+        loading.textContent='AI service not yet connected. Gemini API backend will be deployed soon.'
+      }
+    });
+  </script>
+</body>
+</html>
