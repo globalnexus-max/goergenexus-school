@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="az">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Admin Panel | Goergenexus School</title>
+  <style>
+    :root{--navy:#0c1d36;--blue:#355cff;--gold:#e3bf73;--bg:#f5f8ff;--ink:#172236;--muted:#667085;--line:#e5eaf3;--success:#10b981}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif}.top{background:var(--navy);color:#fff;padding:18px 20px;display:flex;justify-content:space-between;align-items:center}.brand{font-weight:800;font-size:20px;color:#fff}.logout{background:#ff6b6b;color:#fff;border:none;padding:8px 16px;border-radius:6px;cursor:pointer;font-weight:600}.wrap{max-width:1200px;margin:36px auto;padding:0 18px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;margin-bottom:32px}.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px}.card h3{margin:0 0 8px;font-size:14px;color:var(--muted);text-transform:uppercase}.card .value{font-size:28px;font-weight:800;color:var(--blue)}.card .trend{font-size:12px;color:var(--success);margin-top:8px}.section{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:20px}.section h2{margin-top:0}.table{width:100%;border-collapse:collapse;font-size:14px}.table th{text-align:left;padding:12px;background:#f9fafb;border-bottom:1px solid var(--line);font-weight:600}.table td{padding:12px;border-bottom:1px solid var(--line)}.table tr:hover{background:#f9fafb}.badge{display:inline-block;padding:4px 8px;border-radius:4px;font-size:12px;font-weight:600}.badge.success{background:#dcfce7;color:var(--success)}.badge.pending{background:#fef3c7;color:#92400e}
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="brand">📊 Admin Panel</div>
+    <button class="logout" id="logoutBtn">Çıxış</button>
+  </header>
+  
+  <main class="wrap">
+    <h1>Goergenexus School İstatistikası</h1>
+    
+    <div class="grid">
+      <div class="card">
+        <h3>Cəmi istifadəçi</h3>
+        <div class="value" id="totalUsers">0</div>
+        <div class="trend">↑ Bu ay</div>
+      </div>
+      <div class="card">
+        <h3>Premium abonenləri</h3>
+        <div class="value" id="premiumUsers">0</div>
+        <div class="trend">Aktiv</div>
+      </div>
+      <div class="card">
+        <h3>Toplam ödəniş</h3>
+        <div class="value" id="totalRevenue">0 ₼</div>
+        <div class="trend">Bu ay</div>
+      </div>
+      <div class="card">
+        <h3>AI suallari</h3>
+        <div class="value" id="totalQuestions">0</div>
+        <div class="trend">Bugün</div>
+      </div>
+    </div>
+    
+    <section class="section">
+      <h2>📈 Premium Abonələr</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>E-poçt</th>
+            <th>Qeydiyyat tarixi</th>
+            <th>Status</th>
+            <th>Ödəniş</th>
+          </tr>
+        </thead>
+        <tbody id="premiumTable">
+          <tr>
+            <td colspan="4" style="text-align:center;color:var(--muted)">Məlumat yoxdur</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    
+    <section class="section">
+      <h2>🔔 Son Aktivitə</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Hadisə</th>
+            <th>İstifadəçi</th>
+            <th>Vaxt</th>
+          </tr>
+        </thead>
+        <tbody id="activityTable">
+          <tr>
+            <td colspan="3" style="text-align:center;color:var(--muted)">Məlumat yoxdur</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+  
+  <script>
+    const adminPassword = 'admin123'; // Simple auth - use proper system in production
+    
+    // Check auth
+    if (localStorage.getItem('goergenexus-admin') !== adminPassword) {
+      const pwd = prompt('Admin şifrəsini daxil edin:');
+      if (pwd !== adminPassword) {
+        alert('Qorunmuş sahə!');
+        window.location.href = 'index.html';
+      } else {
+        localStorage.setItem('goergenexus-admin', adminPassword);
+      }
+    }
+    
+    // Load stats
+    function loadStats() {
+      const premiumData = JSON.parse(localStorage.getItem('goergenexus-premium') || '{}');
+      const users = JSON.parse(localStorage.getItem('goergenexus-users') || '[]');
+      
+      document.getElementById('totalUsers').textContent = users.length || 0;
+      document.getElementById('premiumUsers').textContent = premiumData.email ? 1 : 0;
+      document.getElementById('totalRevenue').textContent = premiumData.email ? '10 ₼' : '0 ₼';
+      document.getElementById('totalQuestions').textContent = JSON.parse(localStorage.getItem('goergenexus-ai-usage') || '{}').count || 0;
+      
+      // Premium table
+      if (premiumData.email) {
+        document.getElementById('premiumTable').innerHTML = `
+          <tr>
+            <td>${premiumData.email}</td>
+            <td>${new Date(premiumData.date).toLocaleDateString('az-AZ')}</td>
+            <td><span class="badge success">Aktiv</span></td>
+            <td>10 ₼</td>
+          </tr>
+        `;
+      }
+    }
+    
+    loadStats();
+    setInterval(loadStats, 5000); // Refresh every 5 seconds
+    
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+      localStorage.removeItem('goergenexus-admin');
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>
